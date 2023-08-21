@@ -28,7 +28,7 @@ def create_sample_data():
             user = User(
                 name=fake.name(),
                 username=fake.user_name(),
-                password=fake.password(),
+                password_hash=fake.password(),
             )
             db.session.add(user)
         db.session.commit()

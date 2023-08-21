@@ -9,7 +9,9 @@ from flask_wtf import  FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from datetime import datetime
-
+from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy.ext.hybrid import hybrid_property
+import bcrypt
 convention = {
     "ix": 'ix_%(column_0_label)s',
     "uq": "uq_%(table_name)s_%(column_0_name)s",
@@ -26,7 +28,7 @@ class User(db.Model, UserMixin, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), nullable=False)
     username = db.Column(db.String(20), nullable=False, unique=True)
-    password = db.Column(db.String(20))
+    _password_hash = db.Column(db.String(20), nullable=False)
     date_signed = db.Column(db.DateTime, default=datetime.utcnow)
     events = db.relationship('Event', backref='user', lazy=True)
 
@@ -38,15 +40,30 @@ class User(db.Model, UserMixin, SerializerMixin):
             raise ValueError("Name is required")
         elif key == 'username' and not value and len():
             raise ValueError("Username is required")
-        elif len(value) <= 5:
+        elif len(value) <= 3:
                 raise ValueError("Username must be more than 5 characters")
         return value
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # Validate attributes during instance initialization
-        self.validates_attributes("name", self.name)
-        self.validates_attributes("username", self.username)
+
+    @hybrid_property
+    def password_hash(self):
+        return self._password_hash
+
+    @password_hash.setter
+    def password_hash(self, password):
+        if type( password ) is str and len(password) in range(7,20):
+            password_hash = bcrypt.generate_password_hash(password.encode("utf-8"), salt)
+            self._password_hash = password_hash.decode("utf-8")
+        else:
+            print("invalid password")
+    def authenticate(self , password):
+        return bcrypt.checkpw(password.encode("utf-8"), self._password_hash)
+
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     # Validate attributes during instance initialization
+    #     self.validates_attributes("name", self.name)
+    #     self.validates_attributes("username", self.username)
 
 class Event(db.Model, SerializerMixin):
     __tablename__ = "events"
