@@ -1,7 +1,7 @@
 import os
 from flask import Flask , make_response , jsonify  , session, request
 from flask_migrate import Migrate
-from model import db, User, Event , Activity
+from model import db, User, Event , Activity , Comment
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import CSRFProtect
 from flask_bcrypt import Bcrypt
@@ -71,16 +71,21 @@ class Signup(Resource):
         data = request.get_json()
         password = data["password"]
         username = data["username"]
+        name = data['name']
         user = User.query.filter_by(username=username).first()
         if user is not None:
-            return ({"error":"Username already in use" })
+            return ({"error":"Please choose a diffrent Username." })
         if not data:
             return ({"message": "Invalid input"}), 400
+        if len(password) < 7:
+            return ({"error": "Password length must be at least 7 characters"})
+        if not name:
+            return ({"error": "Name is required"})
         salt = bcrypt.gensalt()
         password_hash = bcrypt.hashpw(password.encode("utf-8"), salt)
 
         new_user = User(
-            name = data['name'],
+            name = name,
             username = username,
             _password_hash = password_hash
 
@@ -135,6 +140,23 @@ api.add_resource(Events, '/events')
 
 
 
+class Users(Resource):
+  
+    def get(self):
+        userss = [users.to_dict() for users in User.query.all()]
+        return make_response(jsonify(userss),201)
+
+api.add_resource(Users, '/user')
+
+
+
+class Comments(Resource):
+  
+    def get(self):
+        userss = [users.to_dict() for users in Comment.query.all()]
+        return make_response(jsonify(userss),201)
+
+api.add_resource(Comments, '/comments')
 
 if __name__ == "__main__":
     app.run(port=5555, debug=True)

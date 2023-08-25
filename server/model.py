@@ -33,15 +33,13 @@ class User(db.Model, UserMixin, SerializerMixin):
     events = db.relationship('Event', backref='user', lazy=True)
 
 
-    serialize_rules = ('-events',)
+    serialize_rules = ('-events', "-_password_hash")
     @validates('name', 'username',)
     def validates_attributes(self, key, value):
         if key == 'name' and not value:
             raise ValueError("Name is required")
         elif key == 'username' and not value and len():
             raise ValueError("Username is required")
-        elif len(value) <= 3:
-                raise ValueError("Username must be more than 5 characters")
         return value
 
 
@@ -99,3 +97,5 @@ class Comment(db.Model, SerializerMixin):
     text = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    parent_id = db.Column(db.Integer, nullable=True)
