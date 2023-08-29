@@ -1,0 +1,167 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: rgb(70, 69, 69);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(255, 0, 0, 0.2);
+  max-width: 60%;
+  max-height: 70%;
+  overflow: hidden;
+  position: relative;
+ 
+  width: 100%;
+  height: 100%;
+  display: flex; /* Change display to flex */
+  flex-direction: column; /* Display children vertically */
+}
+
+/* Close Button */
+.close {
+  position: absolute;
+  top: 0px;
+  right: 4px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Close Button Hover Effect */
+.close:hover {
+  color: red;
+}
+
+.comment-box {
+  display: flex;
+  
+  padding: 10px;
+  margin: 10px;
+  width: 800px; 
+  overflow: auto;
+  /* Adjust the width value to your preference */
+}
+
+.comment-avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comment-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  
+}
+
+.comment-text-container {
+  max-height: 50px; /* Adjust the height value to your preference */
+  overflow: auto;
+  
+}
+
+.comment-text {
+  margin: 0;
+}
+
+.comment-info {
+  font-size: 12px;
+  color: #26933a;
+  display: flex;
+  justify-content: space-between;
+}
+.comment-input-container {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  width: 800px;
+  margin-left: 10PX;
+}
+
+.comment-input-container input {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #11c832;
+  border-radius: 4px;
+}
+
+.comment-input-container button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.comment-input-container button:hover {
+  background-color: #0056b3;
+}
+.comments-list{
+    overflow-y: auto;
+    max-height: 300px;
+    margin-top: -200px;
+}
+.eventImage {
+  max-width: 100%;
+  height: auto; 
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  max-height: 350px;
+  margin-left: 0; 
+  min-width: 500px ;/* Adjust as needed */
+  min-height: 120px;
+
+}
+
+.left-div {
+  flex:1;
+  
+  padding: 10px;
+  margin-right: 15px; 
+  max-height: 250px; /* Set your preferred maximum height */
+  overflow: auto; 
+  min-height: 300px;
+  margin-bottom: 10px;
+}
+.right-div {
+  flex: 1;
+  flex-direction: column;
+  padding: 10px;
+  margin-left: 10px;
+  
+}
+
+.title-des {
+  position: absolute;
+  top: 0px; /* Adjust the value to move it down */
+  right: 10px; /* Adjust right position as needed */
+ 
+  padding: 10px;
+  max-width: calc(50% - 20px); /* Adjust max-width as needed */
+  z-index: 1; /* Ensure title-des is above image */
+}
+
+.title-des h2 {
+  font-family: "Your Custom Font", sans-serif; /* Replace with your custom font name */
+  font-size: 40px; /* Adjust the font size as needed */
+  margin-bottom: 50px; /* Add some spacing below the title */
+}
+
+.title-des p {
+  margin-top: 180px; 
+  font-size: 15px; 
+}

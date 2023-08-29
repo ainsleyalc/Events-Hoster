@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+.custom-card .card-title {
+  font-size: 1.25rem; /* Adjust the font size as needed */
+}
+.card-location {
+  margin-top: 10px;
+}

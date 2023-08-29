@@ -135,6 +135,20 @@ class Events(Resource):
     def get(self):
         user = [users.to_dict() for users in Event.query.all()]
         return make_response(jsonify(user),201)
+    
+
+
+    def post(self):
+        title = request.get_json()['title']
+        description = request.get_json()["description"]
+        date = request.get_json()['date']
+        start_time = request.get_json()["start_time"]
+        location = request.get_json()['location']
+        image = request.get_json()["image"]
+        user_id = request.get_json()["user_id"]
+
+
+        
 
 api.add_resource(Events, '/events')
 
@@ -155,7 +169,26 @@ class Comments(Resource):
     def get(self):
         userss = [users.to_dict() for users in Comment.query.all()]
         return make_response(jsonify(userss),201)
+    
 
+    def post(self):
+        text = request.get_json()['text']
+        user_id = request.get_json()['user_id']
+        event_id = request.get_json()["event_id"]
+
+
+        if len(text) <= 1:
+            return {"error": "Comment text must be longer than 1 character."}, 400
+
+        new_Comment = Comment(
+            text = text,
+            user_id = user_id,
+            event_id = event_id
+        )
+        db.session.add(new_Comment)
+        db.session.commit()
+
+        return new_Comment.to_dict(), 201
 api.add_resource(Comments, '/comments')
 
 if __name__ == "__main__":

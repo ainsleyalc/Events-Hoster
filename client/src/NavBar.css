@@ -1,0 +1,34 @@
+.navbar {
+  position: sticky; 
+  top: 0;
+  background-color: #252222;
+  color:  #2e7141; 
+  padding: 10px;
+  outline: 2px solid #2e7141;
+  z-index: 100; 
+}
+  
+  .navbar nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar nav ul li {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar nav ul li a {
+    text-decoration: none;
+    color:  #2e7141; /* Dark text color */
+  }
+  
+  .navbar nav ul li button {
+    background-color: transparent;
+    border: none;
+    color:  #2e7141; /* Dark text color */
+    cursor: pointer;
+  }

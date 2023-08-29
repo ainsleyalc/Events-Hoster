@@ -1,28 +1,20 @@
 import React from "react";
-
-const Home = () =>{
-   
+import Events from "./Events";  
+const Home = () => {
     return (
-        <div>
-            <h1>Home Page</h1>
-       
-                <div>
-                    <input
-                        type="text"
-                        placeholder="username"
-                        value={null}
-                        // onChange={(e) => setUsername(e.target.value)}
-                    />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        // value={password}
-                        // onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <button onClick={null}>Hit me to fetch</button>
-                </div>
-            
+        <div className="background-container">
+        <div className="top-div">
+          <div className="title">LETS GET IT STARTED</div>
+          {/* <div className="line-break"></div> */}
+          <div className="little-text">
+            Start hosting and attending events today
+          </div>
         </div>
+  
+        <div>
+          <Events />
+        </div>
+      </div>
     );
-};
+  };
 export default Home

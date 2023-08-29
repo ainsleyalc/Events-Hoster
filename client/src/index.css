@@ -5,9 +5,117 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #252222
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.custom-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 300px; 
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-card .card-img-top {
+  width: 100%;
+  height: 150px; 
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.custom-card .card-title {
+  font-size: 1.25rem;
+  margin: 10px 0;
+  transition: transform 0.2s ease-in-out;
+}
+.custom-card:hover {
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+.card-description {
+  margin: 10px 0;
+}
+
+.card-location {
+  margin-top: 10px;
+}
+
+.card-user-id {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #000000;
+}
+
+.event-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card.custom-card {
+  flex: 0 0 calc(25% - 20px); 
+  padding: 20px;
+  border: 1px solid #2e7141;
+  text-align: center; 
+  box-sizing: border-box;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  margin: 10px; 
+}
+.background-container {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #333; 
+}
+
+.top-div {
+  background-image: url(https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1; 
+  min-height: 3in; 
+  padding: 100px;
+  font-weight: bold;
+  font-size: 100px; 
+  color: #2e7141;
+  text-align: center; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  height: 100%;
+}
+.little-text {
+  font-size: 30px;
+  color: #84fab0;
+  text-align: center;
+  margin-top: 10px; 
+ 
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.5); 
+  color: #84fab0; 
+  padding: 10px;
+}
+.line-break {
+  margin-top: 20px; /* Adjust margin as needed */
 }

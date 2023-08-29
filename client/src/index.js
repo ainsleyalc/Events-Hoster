@@ -1,25 +1,45 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import SignUpPage from './Componts/SignUpPage'
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
+import { UserContext } from './UserContext';
+import ProfilePage from "./Componts/ProfilePage.js"
+import NavBar from "./Componts/NavBar"
+import Attending from './Componts/Attending';
+import SignUpPage from './Componts/SignUpPage';
+function Index() {
+  const [currentUser, setCurrentUser] = useState(null);
 
+  return (
+    <Router>
+      <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route
+            path="/profile"
+            element={currentUser ?  <>
+              <NavBar /> 
+              <ProfilePage />
+            </> : <Navigate to="/" />}
+            
+          />
+           <Route
+            path="/saved"
+            element={currentUser ?  <>
+              <NavBar /> 
+              <Attending   />
+            </> : <Navigate to="/" />}
+            
+          />
+        </Routes>
+      </UserContext.Provider>
+    </Router>
+  );
+}
+
+// Use ReactDOM.createRoot to render your app
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
- <Router>
-    <Routes>
-      <Route  path="/"  element={<App/>} />
-    </Routes>
-    <Routes>
-      <Route path="/signup"  element={<SignUpPage   />}/>
-    </Routes>
-    
- </Router>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+root.render(<Index />);

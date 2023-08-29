@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 // import {useFormik} from "formik"
 // import * from "yup"
+import "../loginPage.css"
 
 
 const initialState = {
@@ -19,40 +20,45 @@ const initialState = {
     };
   
     return (
-      <div>
-        <h1>LOGIN PAGE</h1>
-        <form onSubmit={(e) =>{
-            e.preventDefault()
-            loginUser(formData)
-            setFormData(initialState)
-            }
-        }>
-        <div>
-          <input
-            type="text"
-            placeholder="Username"
-            value={formData.username}
-            onChange={updateFormData}
-            name="username"
-          />
+      <div className="login-container">
+        <div className="container">
+       
+           
+              <h2>LOGIN PAGE</h2>
+              <form onSubmit={(e) => {
+                e.preventDefault();
+                loginUser(formData);
+                setFormData(initialState);
+              }}>
+                <div className='Username'>
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    value={formData.username}
+                    onChange={updateFormData}
+                    name="username"
+                  />
+                </div>
+                <div className='passwordBox'>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    value={formData.password}
+                    onChange={updateFormData}
+                    name="password"
+                  />
+                </div>
+                <div   className="center-button">
+                  <button type="submit">
+                    Login
+                  </button>
+                </div>
+              </form>
+            </div>
+          
         </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={updateFormData}
-            name="password"
-          />
-        </div>
-        <div>
-          <button type="submit">
-            Login
-          </button>
-        </div>
-      </form>
-    </div>
-  );
+
+    );
   };
   
   export default Login;
