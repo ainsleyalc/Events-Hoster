@@ -81,9 +81,11 @@
   color: #26933a;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+ 
 }
 .comment-input-container {
-  margin-top: 10px;
+  margin-top: -10px;
   display: flex;
   align-items: center;
   width: 800px;
@@ -122,9 +124,9 @@
   border-radius: 8px 8px 0 0;
   max-height: 350px;
   margin-left: 0; 
-  min-width: 500px ;/* Adjust as needed */
+  min-width: 450px ;/* Adjust as needed */
   min-height: 120px;
-
+max-width: 500px;
 }
 
 .left-div {
@@ -164,4 +166,19 @@
 .title-des p {
   margin-top: 180px; 
   font-size: 15px; 
+}
+
+
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px; /* Adjust padding as needed */
+ 
+ 
+}
+.delete-icon {
+  width: 20px; /* Adjust icon width to make it tiny */
+  height: 20px; /* Adjust icon height to make it tiny */
+  
 }

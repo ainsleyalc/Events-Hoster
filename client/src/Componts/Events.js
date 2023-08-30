@@ -1,17 +1,20 @@
 import React from  'react'
 
 import EventsCard from './EventsCard';
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
+import { UserContext } from '../UserContext';
 const Events= () =>{
     const baseUrl = "http://127.0.0.1:5555"
     const eventUrl = baseUrl + "/events"
     const userUrl = baseUrl + "/user"
-    const [event, setEvent] = useState([])
-    const [users, setUsers] = useState([])
-
+  
+    const { event } = useContext(UserContext);
+    const { setEvent } = useContext(UserContext);
+    const { setUsers } = useContext(UserContext);
+    const { users } = useContext(UserContext);
     useEffect(() => {
    
-  
+     
       
       Promise.all([
         fetch(eventUrl).then(response => response.json()),
@@ -20,6 +23,7 @@ const Events= () =>{
         .then(([eventData, userData]) => {
           setEvent(eventData);
           setUsers(userData);
+           console.log(event)
         })
         .catch(error => {
           console.error('An error occurred:', error);
@@ -35,7 +39,7 @@ const Events= () =>{
     const renderList = () => {
 
       if (event.length === 0) {
-        return <p>Loading...</p>;
+        return <p>NO UP COMING EVENTS </p>;
       }
     console.log(event[0].id)
 
@@ -53,6 +57,7 @@ const Events= () =>{
               start_time={singleEvent.start_Time}
               location={singleEvent.location}
               user_id={GrabOtherUser(singleEvent.user_id)}
+             
                   
                   />
           ))}

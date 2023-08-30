@@ -2,6 +2,8 @@ import React, {useContext, useState} from 'react'
 import { UserContext } from '../UserContext';
 import { useNavigate } from 'react-router-dom'
 import NavBar from "./NavBar"
+import "../signUpPage.css"
+import { Link } from 'react-router-dom';
 const initialState = {
     name:"",
     username: '',
@@ -57,51 +59,74 @@ const SignUpPage = () => {
     setFormData(changeFormData);
   };
 
-  return (
-    
-    <div>
-      <NavBar     currentUser={currentUser} setCurrentUser={setCurrentUser}/>
-      <h1>SIGNUP HERE</h1>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          signUpUser(formData);
-          setFormData(initialState);
-        }}
-      >
-       <div>
-          <input
-            type="text"
-            placeholder="Username"
-            value={formData.username}
-            onChange={updateFormData}
-            name="username"
-          />
+return (
+    <div className="login-container">
+      <div className="container">
+        <h2>SIGNUP TODAY</h2>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            signUpUser(formData); // Replace with your signup function
+            setFormData(initialState);
+          }}
+        >
+         <div className="loginboxs">
+          <div className='twin-inputs' >
+              <div className="center-input">
+                Name
+                <br />
+                <input
+                  type="text"
+                  placeholder="Name"
+                  value={formData.name}
+                  onChange={updateFormData}
+                  name="name"
+                />
+              </div>
+              <div className="center-input">
+                Username
+                <br />
+                <input
+                  type="text"
+                  placeholder="Username"
+                  value={formData.username}
+                  onChange={updateFormData}
+                  name="username"
+                />
+              </div>
+              <div className="center-input">
+                Password
+                <br />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={formData.password}
+                  onChange={updateFormData}
+                  name="password"
+                />
+              </div>
+            
+
+       
+
+
+
+          </div>
+
+          <div className="center-button">
+            <button type="submit">Sign Up</button>
+            <br />
+            or
+            <br />
+            <Link to="/">
+        <button>Login</button>
+      </Link>
+          </div>
         </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={updateFormData}
-            name="password"
-          />
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Name"
-            value={formData.name}
-            onChange={updateFormData}
-            name="name"
-          />
-        </div>
-        <div>
-          <button type="submit">Sign Up</button>
-        </div>
+
       </form>
     </div>
-  );
-};
-
+  </div>
+);
+        }  
 export default SignUpPage;

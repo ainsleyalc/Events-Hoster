@@ -11,10 +11,11 @@ import Attending from './Componts/Attending';
 import SignUpPage from './Componts/SignUpPage';
 function Index() {
   const [currentUser, setCurrentUser] = useState(null);
-
+  const [event, setEvent] = useState([])
+  const [users, setUsers] = useState([])
   return (
     <Router>
-      <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+      <UserContext.Provider value={{ currentUser, setCurrentUser, event, setEvent, users, setUsers}}>
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/signup" element={<SignUpPage />} />

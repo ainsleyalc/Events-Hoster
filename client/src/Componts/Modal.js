@@ -83,7 +83,12 @@ const Modal = ({ isModalOpen, toggleModal, ...props}) => {
         alert(data.error); // Display the error message to the user
       } else {
         console.log('Adding comment:', data);
-        // Clear the input
+        
+        setComments((currentComment) =>{
+          return [...currentComment, data]
+        })
+
+
         setNewComment({
           user_id: currentUser.id,
           event_id: props.eKey,
@@ -95,7 +100,8 @@ const Modal = ({ isModalOpen, toggleModal, ...props}) => {
       console.error('Error adding comment:', error);
     });
 };
-
+    
+   
   return (
     <div className="modal-overlay">
     <div className="modal-content">
@@ -119,12 +125,14 @@ const Modal = ({ isModalOpen, toggleModal, ...props}) => {
          
      {filterComments().map(comment => (
             <CommentCard
-              key={comment.id}
+              commentKey={comment.id}
               eKey={props.eKey}
               created_at={comment.created_at} 
               text={comment.text}
               user={grabUser(comment.user_id)}
-              
+              user_id={comment.user_id}
+              comments = {comments}
+              setComments = {setComments}
             />
           ))}
 
