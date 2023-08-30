@@ -9,6 +9,7 @@ from sqlalchemy import MetaData
 from flask_login import login_user, LoginManager, login_required, logout_user, current_user
 from flask_cors import CORS
 from flask_restful import Api, Resource
+import datetime
 # from flask_jwt_extended import JWTManager, jwt_required, create_access_token , get_jwt_identity 
 
 from werkzeug.security import generate_password_hash
@@ -139,16 +140,30 @@ class Events(Resource):
 
 
     def post(self):
-        title = request.get_json()['title']
-        description = request.get_json()["description"]
-        date = request.get_json()['date']
-        start_time = request.get_json()["start_time"]
-        location = request.get_json()['location']
-        image = request.get_json()["image"]
-        user_id = request.get_json()["user_id"]
-
-
+        titles= request.get_json()['title']
+        descriptions = request.get_json()["description"]
+        data = request.json
         
+        start_times = request.get_json()["start_time"]
+        locations = request.get_json()['location']
+        images = request.get_json()["image"]
+        user_ids = request.get_json()["user_id"]
+        parsed_date = datetime.datetime.strptime(data['date'], '%Y-%m-%d').date()  # Use datetime.datetime here
+        parsed_start_time = datetime.datetime.strptime(data['start_time'], '%H:%M:%S').time()  # Use datetime.datetime here
+        new_event = Event(
+            title = titles,
+            description = descriptions,
+            date = parsed_date,
+            start_time = parsed_start_time,
+            location = locations,
+            image = images,
+            user_id = user_ids)
+        db.session.add(new_event)
+        db.session.commit()
+
+        return new_event.to_dict()
+
+
 
 api.add_resource(Events, '/events')
 
@@ -189,6 +204,21 @@ class Comments(Resource):
         db.session.commit()
 
         return new_Comment.to_dict(), 201
+    
+
+
+    def delete(self):
+         user_id = request.get_json()['user_id']
+         comment_id = request.get_json()['comment_id']
+
+         
+         commentToDelete = Comment.query.filter(Comment.id == comment_id).first()
+
+         if not (str(commentToDelete.user_id) == str(user_id)) :
+             return {"error": "Must be your comment to delete"}
+         db.session.delete(commentToDelete)
+         db.session.commit()
+         return "its been deleted"
 api.add_resource(Comments, '/comments')
 
 if __name__ == "__main__":

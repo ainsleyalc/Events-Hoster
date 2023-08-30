@@ -81,4 +81,4 @@ def create_sample_data():
 if __name__ == '__main__':
     with app.app_context():
         delete_records()
-        create_sample_data()
+        # create_sample_data()
