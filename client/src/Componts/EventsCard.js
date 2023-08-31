@@ -2,17 +2,23 @@ import React, {useState, useContext}from "react";
 import "../index.css"
 import Modal from "./Modal";
 import { UserContext } from "../UserContext";
+import EditButtonModal from "./EditButtonModal"; 
 const EventsCard = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {currentUser,setCurrentUser} = useContext(UserContext)
+  const [isEditButtonModalOpen, setIsEditButtonModalOpen] = useState(false);
+  const { event } = useContext(UserContext)
+  const { setEvent } = useContext(UserContext)
   const toggleModal = (event) => {
     setIsModalOpen(!isModalOpen);
   };
   const canEdit = props.user_Id === currentUser.id;
-  const editButton = (event) =>{
-    event.stopPropagation()
-    console.log("hello")
-  }
+  const toggleEditButtonModal = (event) => {
+    event.stopPropagation();
+    setIsEditButtonModalOpen(!isEditButtonModalOpen);
+  };
+  const eventData = event.find(event => event.id === props.eKey);
+    
   return (
     <div>
           <div className="card custom-card" onClick={toggleModal}>
@@ -27,7 +33,7 @@ const EventsCard = (props) => {
           <strong>EventHoster:</strong> {props.user_id}
         </p>
 
-        {canEdit && <button onClick={editButton}>edit</button>}
+        {canEdit && <button onClick={toggleEditButtonModal}>edit</button>}
       </div>
     
     </div>
@@ -44,6 +50,14 @@ const EventsCard = (props) => {
 
 
       />
+      {isEditButtonModalOpen && (
+        <EditButtonModal
+          isOpen={isEditButtonModalOpen}
+          onClose={() => setIsEditButtonModalOpen(false)}
+          eventData={eventData}
+          
+        />
+      )}
     </div>
   )
 };
