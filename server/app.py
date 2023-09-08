@@ -9,6 +9,7 @@ from sqlalchemy import MetaData
 from flask_login import login_user, LoginManager, login_required, logout_user, current_user
 from flask_cors import CORS
 from flask_restful import Api, Resource
+from flask_restful import reqparse
 import datetime
 # from flask_jwt_extended import JWTManager, jwt_required, create_access_token , get_jwt_identity 
 
@@ -16,6 +17,7 @@ from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
 import datetime
 import bcrypt
+import re
 # import jwt
 
 # from jwt.exceptions import ExpiredSignatureError
@@ -149,7 +151,7 @@ class Events(Resource):
         images = request.get_json()["image"]
         user_ids = request.get_json()["user_id"]
         parsed_date = datetime.datetime.strptime(data['date'], '%Y-%m-%d').date()  # Use datetime.datetime here
-        parsed_start_time = datetime.datetime.strptime(data['start_time'], '%H:%M:%S').time()  # Use datetime.datetime here
+        parsed_start_time = datetime.datetime.strptime(data['start_time'], '%I:%M %p').time()  # Use datetime.datetime here
         new_event = Event(
             title = titles,
             description = descriptions,
@@ -162,11 +164,75 @@ class Events(Resource):
         db.session.commit()
 
         return new_event.to_dict()
+    
+
+
+   
 
 
 
 api.add_resource(Events, '/events')
 
+class EventById(Resource):
+    def get(self, event_id):
+        event = Event.query.filter_by(id=event_id).first()
+        if not event:
+            return {"message": "Event not found"}, 404
+        return event.to_dict(), 200
+
+    def patch(self, event_id):
+        event = Event.query.filter_by(id = event_id).first()
+        if not event:
+            return {"message": "Event not found"}, 404
+
+        parser = reqparse.RequestParser()
+        parser.add_argument("title", type=str, required=False)
+        parser.add_argument("description", type=str, required=False)
+        parser.add_argument("date", type=str, required=False)
+        parser.add_argument("start_time", type=str, required=False)
+        parser.add_argument("location", type=str, required=False)
+        parser.add_argument("image", type=str, required=False)
+        # Add more arguments for other attributes
+
+
+        def is_valid_date(date_str):
+            try:
+                datetime.datetime.strptime(date_str, '%Y-%m-%d')
+                return True
+            except ValueError:
+                return False
+
+
+
+        args = parser.parse_args()
+
+        if args["title"]:
+            event.title = args["title"]
+        if args["description"]:
+            event.description = args["description"]
+        if args["date"]:
+            if not is_valid_date(args["date"]):
+                return {"error": "Invalid date format"}, 400
+            event.date = datetime.datetime.strptime(args["date"], '%Y-%m-%d').date()
+        if args["start_time"]:
+          
+            start_time_str = args["start_time"]
+            if not re.search(r'\b(?:AM|PM)\b', start_time_str, re.IGNORECASE):
+                return {"error": "Time must include AM or PM"}, 400
+
+            start_time = datetime.datetime.strptime(start_time_str, '%I:%M %p').time()
+            event.start_time = start_time
+        if args["location"]:
+            event.location = args["location"]
+        if args["image"]:
+            event.image = args["image"]
+        # Update other attributes as needed
+
+        db.session.commit()
+
+        return event.to_dict(), 200
+
+api.add_resource(EventById, "/events/<int:event_id>")
 
 
 class Users(Resource):
