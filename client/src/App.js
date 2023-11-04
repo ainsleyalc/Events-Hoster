@@ -49,12 +49,7 @@ function App() {
     return (
       <div classname="body">
         {/* <NavBar  currentUser={currentUser} setCurrentUser={setCurrentUser}/> */}
-        {
-          currentUser ?
-          (<Home       />)
-            
-            : <LoginPage  loginUser={loginUser}    />
-        }
+          <Home       />
       </div>
         );
 }

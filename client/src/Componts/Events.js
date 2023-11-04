@@ -1,5 +1,5 @@
 import React from  'react'
-
+import "../event.css"
 import EventsCard from './EventsCard';
 import {useState, useEffect, useContext} from 'react'
 import { UserContext } from '../UserContext';
@@ -66,8 +66,10 @@ const Events= () =>{
     };
     
       return (
-        <div className="">
+        <div className="event-Div">
+          <p1>Upcoming Events --</p1>
           {renderList()}
+          <button>View All listings</button>
         </div>
       );
     };

@@ -1,34 +1,90 @@
 .navbar {
   position: sticky; 
   top: 0;
-  background-color: #252222;
-  color:  #2e7141; 
-  padding: 10px;
-  outline: 2px solid #2e7141;
-  z-index: 100; 
+  background-color: #fffafa;
+  height: 50px;
+  display: flex;
 }
+
+.leftNav {
+  width: 33.3%;
+  display: flex;
+  font-weight: 800;
+  font-size: 30px;
+  font-family: 'Courier New', Courier, monospace;
+  align-items: center;
+}
+.leftNav p {
+  color: rgb(64, 206, 237);
+  padding: 0px;
+  margin: 0%;
+ 
   
-  .navbar nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    margin: 0;
-    padding: 0;
-  }
+
+}
+.leftNav img{
+  width:30%;
+  height: 100%;
+}
+
+
+.middleNav{
+  display: flex;
+  width: 33.3%;
+}
+.middleNav ul {
+  width: 100%;
+  height: 100%;
+  padding: 0%;
+  margin: 0;
+ 
+ display: flex;
+ 
+ align-items: center;
+}
+
+.middleNav ul li {
+    display: inline-block;
+    padding-left: 10%;
+    font-size: 17px;
+    padding-bottom: 2px;
+    color: rgb(78, 102, 106); 
+    
+}
+.middleNav p {
+  text-decoration: none;
   
-  .navbar nav ul li {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navbar nav ul li a {
-    text-decoration: none;
-    color:  #2e7141; /* Dark text color */
-  }
-  
-  .navbar nav ul li button {
-    background-color: transparent;
-    border: none;
-    color:  #2e7141; /* Dark text color */
-    cursor: pointer;
-  }
+ 
+}
+.middleNav a:visited {
+  color: rgb(78, 102, 106); 
+  text-decoration: none;
+}
+.middleNav a.custom-link {
+  text-decoration: none; 
+}
+
+.rightNav {
+  width: 33.3%;
+  display: flex;
+  justify-content: flex-end;
+ padding-right: 10px;
+ align-items: center;
+}
+
+.buttonDiv {
+  display: flex;
+  width:80%;
+  gap: 10px;
+  height: 80%;
+  justify-content: flex-end
+}
+.rightNav button {
+ border-radius: 8px;
+ color: #ffffff;
+ background-color:rgb(78, 102, 106); 
+
+
+}
+
+ 

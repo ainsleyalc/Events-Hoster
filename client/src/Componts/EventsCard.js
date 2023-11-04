@@ -3,6 +3,7 @@ import "../index.css"
 import Modal from "./Modal";
 import { UserContext } from "../UserContext";
 import EditButtonModal from "./EditButtonModal"; 
+import "../event.css"
 const EventsCard = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {currentUser,setCurrentUser} = useContext(UserContext)
@@ -21,12 +22,12 @@ const EventsCard = (props) => {
     
   return (
     <div>
-          <div className="card custom-card" onClick={toggleModal}>
-      <img src={props.image} className="card-img-top" alt={props.title} />
-      <div className="card-body">
-        <h5 className="card-title">{props.title}</h5>
-        {/* <p className="card-description">{props.description}</p> */}
-        <div className="card-location">
+          <div className="card-custom-card" onClick={toggleModal}>
+            <img src={props.image} className="card-img-top" alt={props.title} />
+              <div className="card-body">
+                  <h5 className="card-title">{props.title}</h5>
+                     {/* <p className="card-description">{props.description}</p> */}
+                     <div className="card-location">
           <strong>Location:</strong> {props.location}
         </div>
         <p className="card-user-id">

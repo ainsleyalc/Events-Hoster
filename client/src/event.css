@@ -1,0 +1,52 @@
+.event-Div {
+display: flex;
+flex-direction: column;
+text-align: center;
+align-items: center;
+
+}
+.event-Div p1 {
+font-size: 50px;
+font-weight: 900;
+padding-left: 14px;
+color: rgb(74, 71, 71);
+}
+.event-list {
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-x: auto;
+    width: 120%;
+}
+
+
+.card-custom-card {
+    display: flex;
+    max-width: 500px;
+    min-width: 500px;
+    min-height: 500px;
+    max-height: 500px;
+    margin: 10px;
+    background-color: rgb(114, 113, 113);
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    white-space: nowrap;
+
+}
+.card-img-top{
+    height: 200px;
+    width:  95%;
+    border-radius: 10px;
+    padding-top: 5px;
+
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width:100%;
+    margin-left: 10px;
+}
