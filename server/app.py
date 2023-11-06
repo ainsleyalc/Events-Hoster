@@ -18,29 +18,28 @@ from werkzeug.security import check_password_hash
 import datetime
 import bcrypt
 import re
-# import jwt
-
-# from jwt.exceptions import ExpiredSignatureError
 from functools import wraps
-app = Flask(__name__)
-api = Api(app)
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
-# postgres://flask_event_hoster_user:B4yU6Ab0yAWSpFtRCqnl4WiJWkJp6L3h@dpg-cl4a7fquuipc738taj9g-a.ohio-postgres.render.com/flask_event_hoster
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-migrate = Migrate(app,db,render_as_batch=True)
+def create_app():
+    app = Flask(__name__)
+    api = Api(app)
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+    # postgres://flask_event_hoster_user:B4yU6Ab0yAWSpFtRCqnl4WiJWkJp6L3h@dpg-cl4a7fquuipc738taj9g-a.ohio-postgres.render.com/flask_event_hoster
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    migrate = Migrate(app,db,render_as_batch=True)
 
 
 
-app.secret_key = b'"l\xa9\xe0w\x08\r#\xad\x8c\xb2\x88\x8b\xa9\x91\xa4'
-app.config['SECRET_KEY'] = b'"l\xa9\xe0w\x08\r#\xad\x8c\xb2\x88\x8b\xa9\x91\xa4'
-app.config['SESSION_TYPE'] = 'filesystem'  # You can choose other session types as well
-app.config['SESSION_PERMANENT'] = False
-app.config['SESSION_USE_SIGNER'] = True
-app.config['SESSION_KEY_PREFIX'] = 'myapp'
+    app.secret_key = b'"l\xa9\xe0w\x08\r#\xad\x8c\xb2\x88\x8b\xa9\x91\xa4'
+    app.config['SECRET_KEY'] = b'"l\xa9\xe0w\x08\r#\xad\x8c\xb2\x88\x8b\xa9\x91\xa4'
+    app.config['SESSION_TYPE'] = 'filesystem'  # You can choose other session types as well
+    app.config['SESSION_PERMANENT'] = False
+    app.config['SESSION_USE_SIGNER'] = True
+    app.config['SESSION_KEY_PREFIX'] = 'myapp'
 
-CORS(app)
+    CORS(app)
 
-db.init_app(app)
+    db.init_app(app)
+    return app
 
 
 
