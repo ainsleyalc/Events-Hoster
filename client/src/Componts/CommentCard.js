@@ -3,7 +3,7 @@ import "../Modal.css"
 import { UserContext } from "../UserContext";
 const CommentCard = (props) =>{
   const {currentUser,setCurrentUser} = useContext(UserContext)
-  const baseUrl = "http://127.0.0.1:5555"
+  const baseUrl = "http://127.0.0.1:5554"
   const commentsUrl = baseUrl + "/comments"
   const deleteComment = () =>{
     fetch(commentsUrl, {

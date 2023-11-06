@@ -4,8 +4,14 @@ import NavBar from "./NavBar";
 import { UserContext } from '../UserContext'
 import "../index.css"
 import logo from "../quoteLogo.png"
+import { useState } from "react";
+import Modal2 from "./Modal2"
 const Home = () => {
   const {currentUser,setCurrentUser} = useContext(UserContext)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = (event) => {
+    setIsModalOpen(!isModalOpen);
+  };
     return (
       
         <div className="background-container">
@@ -14,7 +20,8 @@ const Home = () => {
           <div className="left-Top-Div">
             <p>Host And Attend Events Today</p>
             <h1>Effortlessly host and participate in events today with a simple click, all at no cost. Experience the convenience and formality of our event platform.</h1>
-            <button  className="ViewButton">View Events</button>          
+            <button  className="ViewButton">View Events</button>  
+           {currentUser ? (<button className="ViewButton" onClick={toggleModal}>Add Event Today</button>    ) : null }     
           </div>
           <div className="right-Top-Div">
             <img   src="https://seo.workstream.us/images/landing-job-desc.png"/>
@@ -42,6 +49,13 @@ const Home = () => {
         <div className="Buttom-of-Page">
 
         </div>
+        <Modal2
+        isOpen={isModalOpen}
+        onClose={toggleModal}
+ 
+
+
+      />
       </div>
     );
   };

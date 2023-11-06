@@ -1,0 +1,15 @@
+.edit-button-modal-content{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.input-group {
+    display: flex;
+
+}
+
+.input-group input {
+    margin: 10px;
+}

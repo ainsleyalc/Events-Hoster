@@ -9,7 +9,7 @@ import logo from "../sendicon.png"
 const Modal = ({ isModalOpen, toggleModal, ...props}) => {
   const [comments, setComments] = useState([]);
   const [users, setUsers] = useState([])
-  const baseUrl = "http://127.0.0.1:5555"
+  const baseUrl = "http://127.0.0.1:5554"
   const commentsUrl = baseUrl + "/comments"
   const usersUrl = baseUrl + "/user"
   const [newComment, setNewComment] = useState({});

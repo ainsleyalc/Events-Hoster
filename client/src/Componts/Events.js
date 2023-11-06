@@ -4,7 +4,7 @@ import EventsCard from './EventsCard';
 import {useState, useEffect, useContext} from 'react'
 import { UserContext } from '../UserContext';
 const Events= () =>{
-    const baseUrl = "http://127.0.0.1:5555"
+    const baseUrl = "http://127.0.0.1:5554"
     const eventUrl = baseUrl + "/events"
     const userUrl = baseUrl + "/user"
   
