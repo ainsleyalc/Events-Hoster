@@ -22,9 +22,9 @@ from functools import wraps
 def create_app():
     app = Flask(__name__)
     
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
-    # postgres://flask_event_hoster_user:B4yU6Ab0yAWSpFtRCqnl4WiJWkJp6L3h@dpg-cl4a7fquuipc738taj9g-a.ohio-postgres.render.com/flask_event_hoster
+    app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://flask_event_hoster_user:B4yU6Ab0yAWSpFtRCqnl4WiJWkJp6L3h@dpg-cl4a7fquuipc738taj9g-a.ohio-postgres.render.com/flask_event_hoster"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    # 
     migrate = Migrate(app,db,render_as_batch=True)
 
 
