@@ -45,6 +45,6 @@ SQLAlchemy-serializer==1.4.1
 
 
 
-Werkzeug==2.3.6
+Werkzeug==2.2.3
 WTForms==3.0.1
 
