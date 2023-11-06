@@ -16,7 +16,7 @@ distlib==0.3.6
 executing==1.2.0
 Faker==18.13.0
 
-Flask==2.3.2
+Flask==2.2.5
 Flask-Bcrypt==1.0.1
 Flask-Cors==4.0.0
 
