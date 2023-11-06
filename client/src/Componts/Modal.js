@@ -2,7 +2,7 @@ import React, {useEffect, useState, useContext} from 'react';
 import "../Modal.css"
 import CommentCard from './CommentCard';
 import { UserContext } from '../UserContext';
-
+import logo from "../sendicon.png"
   
   
 
@@ -110,20 +110,17 @@ const Modal = ({ isModalOpen, toggleModal, ...props}) => {
       </span>
      
       <div className="content-containers">
-        <div className="right-div">
-          <img className="eventImage" src={props.image} alt={props.title} />
-          
-          <div className="title-des">
-          <h2>{props.title}</h2>
-          <p>Description: {props.description}</p>
-
-        </div>
-        
-  
-        </div>
-        <div className="left-div">
-         
-     {filterComments().map(comment => (
+       <div className='Modal-Top-left'>
+          <img src={props.image}/>
+       </div>
+       <div className='Modal-Top-Right'>
+        <p>{props.title}</p>
+        <p3>{props.description}</p3>
+       </div>
+      </div>  
+      <div className='comment-Container'>
+          <div className='comment-Box'>
+          {filterComments().map(comment => (
             <CommentCard
               commentKey={comment.id}
               eKey={props.eKey}
@@ -134,22 +131,19 @@ const Modal = ({ isModalOpen, toggleModal, ...props}) => {
               comments = {comments}
               setComments = {setComments}
             />
-          ))}
+          ))} 
+          </div>
+     </div>
+     <div  className='comment-input-container'>
 
-          
+      {currentUser ? ( <div><input  placeholder='Write Here' className='comment-input'   value={newComment.text}
+            onChange={handleCommentChange} type="text"/>  <button onClick={handleAddComment} className='send-Button'>SEND</button></div>
+        ) :<p >Sign in to comment</p>}
      
-        </div>
-        <div className="comment-input-container">
-          <input
-            type="text"
-            placeholder="Write a comment..."
-            value={newComment.text}
-            onChange={handleCommentChange}
-          />
-          <button onClick={handleAddComment}>Add Comment</button>
-        </div>
-      </div>
+     </div>
+     
     </div>
+  
   </div>
 );
 };

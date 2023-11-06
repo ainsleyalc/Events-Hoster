@@ -66,7 +66,7 @@ return (
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            signUpUser(formData); // Replace with your signup function
+            signUpUser(formData); 
             setFormData(initialState);
           }}
         >
@@ -118,7 +118,7 @@ return (
             <br />
             or
             <br />
-            <Link to="/">
+            <Link to="/login">
         <button>Login</button>
       </Link>
           </div>

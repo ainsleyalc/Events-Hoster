@@ -39,25 +39,19 @@ const CommentCard = (props) =>{
           alt="Avatar"
         />
       </div>
-      <div className="comment-content">
-        <div className="comment-info">
-          <span className="comment-user">{props.user}</span>
-          <span className="comment-date">{props.created_at}</span>
-          <div>
-              {currentUser.id === props.user_id && (
-        <button className="delete-button" onClick={deleteComment}>
-          <img src="https://img.icons8.com/glyph-neue/64/delete--v1.png" alt="delete--v1" className="delete-icon" />
-        </button>
-      )}
-          </div>
+      <div  className="comment-section">
+        <p3>{props.user}</p3>
+        <p4> {props.text}</p4>
         
-        </div>
-        <div className="comment-text-container">
-          <p className="comment-text">
-            {props.text}
-          </p>
-        </div>
-    
+      </div>
+      <div className="Right-Side-Comment">
+        <span className="comment-date">{props.created_at}</span>
+        {currentUser ?(currentUser.id === props.user_id && (
+        <button1 className="delete-button" onClick={deleteComment}>
+          <img src="https://img.icons8.com/glyph-neue/64/delete--v1.png" alt="delete--v1" className="delete-icon" />
+        </button1>
+      )):null
+        }
       </div>
     </div>
   );

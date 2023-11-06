@@ -14,9 +14,9 @@ color: rgb(74, 71, 71);
 .event-list {
     display: flex;
     white-space: nowrap;
-    overflow: hidden;
+    
     overflow-x: auto;
-    width: 120%;
+    width: 100%;
 }
 
 
@@ -27,13 +27,14 @@ color: rgb(74, 71, 71);
     min-height: 500px;
     max-height: 500px;
     margin: 10px;
-    background-color: rgb(114, 113, 113);
+    background-color: rgb(240, 238, 238);
     overflow: hidden;
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
     white-space: nowrap;
-
+    position: relative;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
 }
 .card-img-top{
     height: 200px;
@@ -48,5 +49,45 @@ color: rgb(74, 71, 71);
     flex-direction: column;
     text-align: left;
     width:100%;
-    margin-left: 10px;
+    margin-left: 25px;
+}
+.card-title{
+   
+    margin: 0;
+    margin-top: 15px;
+    padding: 0%;
+    font-size: 40px;
+    color: rgb(95, 93, 93);
+    font-weight: 800;
+
+}
+.card-location{
+    display: flex;
+    flex-direction: column;
+}
+.event-Div button {
+        margin-top: 10px;
+        width: 13%;
+        border-radius: 18px;
+        height: 46px;
+        background-color: rgb(78, 102, 106); 
+        font-size: 13px;
+}
+
+.card-user-id{
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  font-size: 20px;
+  margin-left: 10px;
+  width: 100%;
+}
+
+.card-user-id button{
+width: 200px;
+}
+.TapButton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }

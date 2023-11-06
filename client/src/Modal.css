@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 252, 252, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,7 @@
 
 /* Modal Content */
 .modal-content {
-  background-color: rgb(70, 69, 69);
+  background-color: rgb(218, 225, 228);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(255, 0, 0, 0.2);
@@ -28,7 +28,7 @@
   flex-direction: column; /* Display children vertically */
 }
 
-/* Close Button */
+
 .close {
   position: absolute;
   top: 0px;
@@ -37,19 +37,53 @@
   cursor: pointer;
 }
 
-/* Close Button Hover Effect */
+
 .close:hover {
   color: red;
 }
+.content-containers{
+  display: flex;
+  width: 100%;
+  height: 400px;
+}
+.Modal-Top-left {
+  display: flex;
+  width: 50%;
+}
+.Modal-Top-left img{
+  min-width: 100%;
+  min-height: 100%;
+  border-radius: 10px;
+}
+.Modal-Top-Right {
+  display: flex;
+  width: 50%;
+ justify-content: center;
+ overflow: hidden;
+ flex-direction: column;
+} 
+.Modal-Top-Right p {
+  font-size: 60px;
+  font-weight: 800;
+  white-space: normal;
+  margin: 0;
+  margin-top: 20px;
+  padding: 0;
 
+}
+.Modal-Top-Right p3 {
+  white-space: normal;
+}
+.comment-Container {
+  height: 40%;
+  width: 100%;
+overflow: auto;
+}
 .comment-box {
   display: flex;
-  
-  padding: 10px;
-  margin: 10px;
-  width: 800px; 
-  overflow: auto;
-  /* Adjust the width value to your preference */
+  margin: 20px;
+  position: relative;
+  justify-content: space-between;
 }
 
 .comment-avatar img {
@@ -61,13 +95,69 @@
 
 .comment-content {
   display: flex;
+  
+  
+  
+} 
+.comment-section{
+  display: flex;
   flex-direction: column;
-  flex: 1;
+ 
+  text-align: left;
+  padding-top:4px ;
+}
+
+.comment-section p3 {
+  margin: 0;
+  padding: 0%;
+  font-style:initial;
+  font-weight: 700;
+  color:rgb(99, 97, 97)
+}
+
+.Right-Side-Comment{
+  display: flex;
+  margin-left: auto;
+  flex-direction: column;
   
 }
 
-.comment-text-container {
-  max-height: 50px; /* Adjust the height value to your preference */
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px; 
+ 
+ 
+}
+.comment-input {
+ border-color: aliceblue;
+ font-size: 12px;
+ box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+ padding: 0%;
+ margin: 0%;
+
+}
+
+.comment-input::placeholder {
+  color: rgb(166, 157, 157);
+  padding-left: 13px;
+}
+.comment-input-container {
+ display: flex;
+ align-items: center;
+ margin-left: 15px;
+ 
+}
+
+
+.send-Button {
+   width: 100%;
+   height: 10px;
+}
+
+/* .comment-text-container {
+  max-height: 50px; 
   overflow: auto;
   
 }
@@ -124,7 +214,7 @@
   border-radius: 8px 8px 0 0;
   max-height: 350px;
   margin-left: 0; 
-  min-width: 450px ;/* Adjust as needed */
+  min-width: 450px ;
   min-height: 120px;
 max-width: 500px;
 }
@@ -134,7 +224,7 @@ max-width: 500px;
   
   padding: 10px;
   margin-right: 15px; 
-  max-height: 250px; /* Set your preferred maximum height */
+  max-height: 250px;
   overflow: auto; 
   min-height: 300px;
   margin-bottom: 10px;
@@ -149,18 +239,18 @@ max-width: 500px;
 
 .title-des {
   position: absolute;
-  top: 0px; /* Adjust the value to move it down */
-  right: 10px; /* Adjust right position as needed */
+  top: 0px; 
+  right: 10px; 
  
   padding: 10px;
-  max-width: calc(50% - 20px); /* Adjust max-width as needed */
-  z-index: 1; /* Ensure title-des is above image */
+  max-width: calc(50% - 20px); 
+  z-index: 1; 
 }
 
 .title-des h2 {
-  font-family: "Your Custom Font", sans-serif; /* Replace with your custom font name */
-  font-size: 40px; /* Adjust the font size as needed */
-  margin-bottom: 50px; /* Add some spacing below the title */
+  font-family: "Your Custom Font", sans-serif; 
+  font-size: 40px; 
+  margin-bottom: 50px; 
 }
 
 .title-des p {
@@ -168,17 +258,10 @@ max-width: 500px;
   font-size: 15px; 
 }
 
+*/
 
-.delete-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px; /* Adjust padding as needed */
- 
- 
-}
 .delete-icon {
-  width: 20px; /* Adjust icon width to make it tiny */
-  height: 20px; /* Adjust icon height to make it tiny */
+  width: 20px; 
+  height: 20px; 
   
-}
+}  

@@ -4,6 +4,7 @@ import Modal from "./Modal";
 import { UserContext } from "../UserContext";
 import EditButtonModal from "./EditButtonModal"; 
 import "../event.css"
+import logo from "../sendicon.png"
 const EventsCard = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {currentUser,setCurrentUser} = useContext(UserContext)
@@ -13,7 +14,9 @@ const EventsCard = (props) => {
   const toggleModal = (event) => {
     setIsModalOpen(!isModalOpen);
   };
-  const canEdit = props.user_Id === currentUser.id;
+  
+  const canEdit = currentUser ? props.user_Id === currentUser.id : null;
+
   const toggleEditButtonModal = (event) => {
     event.stopPropagation();
     setIsEditButtonModalOpen(!isEditButtonModalOpen);
@@ -22,21 +25,27 @@ const EventsCard = (props) => {
     
   return (
     <div>
-          <div className="card-custom-card" onClick={toggleModal}>
+          <div className="card-custom-card" >
             <img src={props.image} className="card-img-top" alt={props.title} />
               <div className="card-body">
                   <h5 className="card-title">{props.title}</h5>
                      {/* <p className="card-description">{props.description}</p> */}
                      <div className="card-location">
-          <strong>Location:</strong> {props.location}
+         <p><strong>Location:</strong> {props.location}</p> 
+          <strong>Time:{props.start_Time}</strong>
         </div>
-        <p className="card-user-id">
-          <strong>EventHoster:</strong> {props.user_id}
-        </p>
-
-        {canEdit && <button onClick={toggleEditButtonModal}>edit</button>}
+        
+        {currentUser ? (
+    canEdit && <button onClick={toggleEditButtonModal}>edit</button>
+  ) : null}
       </div>
-    
+      <div className="card-user-id">
+        <div className="TapButton"><button onClick={toggleModal}>Tap For More Info</button></div>
+        <p>
+          <strong>Event-Hoster:</strong> {props.user_id}
+        </p>
+      </div>
+
     </div>
       <Modal
         isModalOpen={isModalOpen}
