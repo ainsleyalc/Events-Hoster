@@ -1,7 +1,7 @@
 
 from datetime import datetime
 from sqlalchemy.orm import sessionmaker
-from model import db, User, Event, Activity, Comment, event_activity_association
+from model import db, User, Event, Comment, event_activity_association
 from app import app
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -16,7 +16,7 @@ fake = Faker()
 
 def delete_records():
         User.query.delete()
-        Activity.query.delete()
+        
         Event.query.delete()
         Comment.query.delete()
         db.session.query(event_activity_association).delete()
@@ -28,7 +28,7 @@ def create_sample_data():
             user = User(
                 name=fake.name(),
                 username=fake.user_name(),
-                password_hash=fake.password(),
+                _password_hash=fake.password(),
             )
             db.session.add(user)
         db.session.commit()
@@ -51,18 +51,7 @@ def create_sample_data():
             db.session.add(event)
         db.session.commit()
        # Create 10 different activities
-        activities = []
-        for _ in range(10):
-            activity = Activity(name=fake.word(), outdoor=fake.boolean())
-            activities.append(activity)
-            db.session.add(activity)
-        db.session.commit()
-
-        # Associate activities with events
-        for i, event in enumerate(events):
-            activity = activities[i % len(activities)]
-            event.activities.append(activity)
-        db.session.commit()
+     
 
         # Create 10 more comments
         users = User.query.all()
@@ -77,8 +66,10 @@ def create_sample_data():
             )
             db.session.add(comment)
         db.session.commit()
+      
 
 if __name__ == '__main__':
     with app.app_context():
-        delete_records()
-        # create_sample_data()
+        
+        create_sample_data()
+        print("its done2")

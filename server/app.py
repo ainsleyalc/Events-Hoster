@@ -21,7 +21,7 @@ import re
 from functools import wraps
 def create_app():
     app = Flask(__name__)
-    api = Api(app)
+    
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
     # postgres://flask_event_hoster_user:B4yU6Ab0yAWSpFtRCqnl4WiJWkJp6L3h@dpg-cl4a7fquuipc738taj9g-a.ohio-postgres.render.com/flask_event_hoster
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -42,8 +42,8 @@ def create_app():
     return app
 
 
-
-
+app = create_app()
+api = Api(app)
 @app.route("/")
 def home():
     return "<h1>hello<h1>"
@@ -274,6 +274,6 @@ class Comments(Resource):
 api.add_resource(Comments, '/comments')
 
 if __name__ == "__main__":
-    app.run(port=5555, debug=True)
+    app.run(port=5545, debug=True)
 
 
