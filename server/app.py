@@ -24,7 +24,8 @@ import re
 from functools import wraps
 app = Flask(__name__)
 api = Api(app)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+# postgres://flask_event_hoster_user:B4yU6Ab0yAWSpFtRCqnl4WiJWkJp6L3h@dpg-cl4a7fquuipc738taj9g-a.ohio-postgres.render.com/flask_event_hoster
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 migrate = Migrate(app,db,render_as_batch=True)
 
@@ -36,11 +37,7 @@ app.config['SESSION_TYPE'] = 'filesystem'  # You can choose other session types 
 app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_USE_SIGNER'] = True
 app.config['SESSION_KEY_PREFIX'] = 'myapp'
-# app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_SECRET') # Change this!
-# app.config["JWT_SECRET_KEY"] = b'"l\xa9\xe0w\x08\r#\xad\x8c\xb2\x88\x8b\xa9\x91\xa4'
-# jwt = JWTManager(app)
- 
-# csrf = CSRFProtect(app)
+
 CORS(app)
 
 db.init_app(app)
@@ -52,17 +49,7 @@ db.init_app(app)
 def home():
     return "<h1>hello<h1>"
 
-# def token_required(f):
-#     @wraps(f)
-#     def decorated(*args, **kwargs):
-#         try:
-#             jwt_required()  # This will handle token validation and expiration
-#             current_user = User.query.filter_by(id=get_jwt_identity().first())
-#             return f(current_user, *args, **kwargs)
-#         except:
-#             return jsonify({'message': 'Token is missing or invalid'}), 401
 
-#     return decorated
 
 class Signup(Resource):
 
@@ -145,7 +132,7 @@ class Events(Resource):
         titles= request.get_json()['title']
         descriptions = request.get_json()["description"]
         data = request.json
-        
+    
         start_times = request.get_json()["start_time"]
         locations = request.get_json()['location']
         images = request.get_json()["image"]
