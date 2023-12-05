@@ -11,6 +11,8 @@ from flask_cors import CORS
 from flask_restful import Api, Resource
 from flask_restful import reqparse
 import datetime
+
+from datetime import datetime
 # from flask_jwt_extended import JWTManager, jwt_required, create_access_token , get_jwt_identity 
 
 from werkzeug.security import generate_password_hash
@@ -144,8 +146,9 @@ class Events(Resource):
         locations = request.get_json()['location']
         images = request.get_json()["image"]
         user_ids = request.get_json()["user_id"]
-        parsed_date = datetime.datetime.strptime(data['date'], '%Y-%m-%d').date()  # Use datetime.datetime here
-        parsed_start_time = datetime.datetime.strptime(data['start_time'], '%I:%M %p').time()  # Use datetime.datetime here
+        parsed_date = request.get_json()["date"]
+        parsed_start_time = request.get_json()["start_time"]
+        
         new_event = Event(
             title = titles,
             description = descriptions,
@@ -209,13 +212,19 @@ class EventById(Resource):
                 return {"error": "Invalid date format"}, 400
             event.date = datetime.datetime.strptime(args["date"], '%Y-%m-%d').date()
         if args["start_time"]:
-          
-            start_time_str = args["start_time"]
-            if not re.search(r'\b(?:AM|PM)\b', start_time_str, re.IGNORECASE):
-                return {"error": "Time must include AM or PM"}, 400
+             start_time_str = args["start_time"]
+             time_pattern = re.compile(r'^\d{1,2}:\d{2}\s*(?:AM|PM)$', re.IGNORECASE)
 
-            start_time = datetime.datetime.strptime(start_time_str, '%I:%M %p').time()
-            event.start_time = start_time
+             if not time_pattern.match(start_time_str):
+                return {"error": "Invalid time format. Time must be in HH:MM AM/PM format"}, 400
+             parsed_start_time = datetime.datetime.strptime(start_time_str, '%I:%M %p')
+             new_Time = parsed_start_time.strftime('%I:%M %p')
+            #  start_time = datetime.strftime(start_time_str, '%I:%M %p').time()
+            #  start_datetime = datetime.datetime.strptime(start_time_str, '%I:%M %p')
+            #  start_time = start_datetime.strftime('%I:%M %p')
+             event.start_time = new_Time
+        else:
+            return {"error": "start_time is required"}, 400
         if args["location"]:
             event.location = args["location"]
         if args["image"]:
