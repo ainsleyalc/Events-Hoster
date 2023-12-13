@@ -3,6 +3,7 @@ import "../event.css"
 import EventsCard from './EventsCard';
 import {useState, useEffect, useContext} from 'react'
 import { UserContext } from '../UserContext';
+import { Link } from 'react-router-dom'
 const Events= () =>{
     const baseUrl = "http://127.0.0.1:5554"
     const eventUrl = baseUrl + "/events"
@@ -41,26 +42,25 @@ const Events= () =>{
       if (event.length === 0) {
         return <p>NO UP COMING EVENTS </p>;
       }
-    console.log(event[0].id)
+    console.log()
 
 
 
       return (
-        <div className="event-list">
-          {event.map((singleEvent) => (
-            <EventsCard
-              eKey={singleEvent.id}
-              image={singleEvent.image}
-              title={singleEvent.title}
-              description={singleEvent.description}
-              date={singleEvent.date}
-              start_time={singleEvent.start_Time}
-              location={singleEvent.location}
-              user_id={GrabOtherUser(singleEvent.user_id)}
-             
-                  
-                  />
-          ))}
+        <div className='event-list'>
+          {event.slice(-5).map((singleEvent) => (
+    <EventsCard
+      ekey={singleEvent.id}
+      image={singleEvent.image}
+      title={singleEvent.title}
+      description={singleEvent.description}
+      date={singleEvent.date}
+      start_time={singleEvent.start_time} // adjusted to camelCase for start_time
+      location={singleEvent.location}
+      user_id={GrabOtherUser(singleEvent.user_id)}
+      user_Id={singleEvent.user_id}
+    />
+  ))}
     </div>
       );
     };
@@ -69,7 +69,8 @@ const Events= () =>{
         <div className="event-Div">
           <p1>Upcoming Events --</p1>
           {renderList()}
-          <button>View All listings</button>
+         
+          <Link to="/listing" className="ViewButton2">View Events</Link>
         </div>
       );
     };

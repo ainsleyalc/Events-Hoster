@@ -1,17 +1,20 @@
 import React, {useState, useContext} from "react";
 import "../Modal2.css"
 import { UserContext } from "../UserContext";
+import { DatePicker } from '@mui/x-date-pickers';
+import { DesktopDateTimePicker } from '@mui/x-date-pickers';
+import dayjs from 'dayjs'
+import xicon from "../close.png"
 const Modal2 = ({ isOpen, onClose }) => {
     const {currentUser,setCurrentUser} = useContext(UserContext)
- 
+    const baseurl = "http://127.0.0.1:5554"
+    const [date, setDate] = useState("")
     const [editedEvent, setEditedEvent] = useState({
       title: "",
       description: "",
-      date: "",
-      start_time: "",
       location: "",
       image: "",
-      user_id: currentUser ? currentUser.id : 1
+     
     
     });
     const { setEvent } = useContext(UserContext)
@@ -24,49 +27,76 @@ const Modal2 = ({ isOpen, onClose }) => {
     };
   
     const handleFormSubmit = async (e) => {
-        // e.preventDefault();
-      
-        const response = await fetch(`/events`, {
+      e.preventDefault();
+    
+      try {
+        const formattedDates = formatDate(date);
+        const user_id = currentUser ? currentUser.id : null;
+    
+        const response = await fetch(`${baseurl}/events`, {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify(editedEvent)
+          body: JSON.stringify({
+            ...editedEvent,
+            date: formattedDates.formattedDate,
+            start_time: formattedDates.formattedTime,
+            user_id: user_id,
+          }),
         });
-      
-        try {
-          if (response.ok) {
-            const updatedEventData = await response.json();
-            console.log(updatedEventData);
-      
-            setEvent((prevEvents) => {
-              const updatedEvents = prevEvents.map((event) =>
-                event.id === updatedEventData.id ? updatedEventData : event
-              );
-              return updatedEvents;
-            });
-      
-            onClose(); 
-          } else  {
-            const errorData = await response.json();
-            const errorMessage = errorData.error; 
-            alert("Error updating event details: " + errorMessage); 
-          }
-        } catch (error) {
-          console.error("An error occurred:", error);
+    
+        if (response.ok) {
+          const updatedEventData = await response.json();
+          
+          setEvent((prevEvents) => prevEvents.map((event) => (event.id === updatedEventData.id ? updatedEventData : event)));
+          onClose();
+          alert("Event details updated successfully!");
+        } else {
+          const errorData = await response.json();
+          alert("Error updating event details: " + errorData.error);
         }
+      } catch (error) {
+        console.error("An error occurred:", error);
+      }
+    };
+    
+    function formatDate(dateObject) {
+      if (!dateObject || !dateObject.$d) {
+        return null;
+      }
+    
+      const formattedTime = new Intl.DateTimeFormat(dateObject.$L, {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+      }).format(dateObject.$d);
+    
+      const formattedDate = new Intl.DateTimeFormat(dateObject.$L, {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }).format(dateObject.$d);
+    
+      return {
+        formattedTime,
+        formattedDate,
       };
-      
-  
+    }
       return (
         isOpen ? (
           <div className="modal-background">
             <div className="edit-button-modal-content">
+               <button1 onClick={onClose} className="cancel-button"> <img src={xicon}/></button1>
               <h2> New Event Details</h2>
+       
+             
               <form onSubmit={handleFormSubmit}>
-                <div className="input-group">
-                  <label>
-                Title
+
+              <div className="input-Group">
+                <h1>Title</h1>
+                  <label className="label">
+              
                     <input
                       type="text"
                       name="title"
@@ -75,10 +105,15 @@ const Modal2 = ({ isOpen, onClose }) => {
                       placeholder="Title"
                     />
                   </label>
+           
+                          
                 </div>
-                <div className="input-group">
+               
+                 
+                <div className="input-Group">
+                    <h1>Description:</h1>
                   <label>
-                    Description:
+                  
                     <input
                       name="description"
                       value={editedEvent.description}
@@ -86,32 +121,11 @@ const Modal2 = ({ isOpen, onClose }) => {
                       placeholder="Description"
                     />
                   </label>
-                </div>
-                <div className="input-group">
+                </div>  
+
+                <div className="input-Group">
                   <label>
-                    Date:
-                    <input
-                      name="date"
-                      value={editedEvent.date}
-                      onChange={handleInputChange}
-                      placeholder="Date"
-                    />
-                  </label>
-                </div>
-                <div className="input-group">
-                  <label>
-                    Start Time:
-                    <input
-                      name="start_time"
-                      value={editedEvent.start_time}
-                      onChange={handleInputChange}
-                      placeholder="Start Time"
-                    />
-                  </label>
-                </div>
-                <div className="input-group">
-                  <label>
-                    Location:
+                    <h1>Location:</h1>
                     <input
                       name="location"
                       value={editedEvent.location}
@@ -120,9 +134,9 @@ const Modal2 = ({ isOpen, onClose }) => {
                     />
                   </label>
                 </div>
-                <div className="input-group">
+                <div className="input-Group">
                   <label>
-                    Image:
+                  <h1> Image Link:</h1> 
                     <input
                       name="image"
                       value={editedEvent.image}
@@ -130,11 +144,16 @@ const Modal2 = ({ isOpen, onClose }) => {
                       placeholder="Image"
                     />
                   </label>
+                </div>                     <div  className="timeclicker">
+                  
+                    <DesktopDateTimePicker defaultValue={dayjs('2022-04-17T15:30')} value={date} onChange={(newValue) => setDate(newValue)}/>
+                  </div>
+                <div>
+                   <button type="submit" className="Submit-Button">ADD Event </button>
                 </div>
-    
-                <button type="submit">Save Changes</button>
+               
               </form>
-              <button onClick={onClose}>Cancel</button>
+             
             </div>
           </div>
         ) : null

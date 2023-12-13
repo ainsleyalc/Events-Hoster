@@ -7,6 +7,11 @@ import Home from "./Componts/Home"
 import LoginPage from "./Componts/LoginPage"
 import { UserContext } from './UserContext';
 import { useNavigate } from 'react-router-dom';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
+import { DesktopDateTimePicker } from '@mui/x-date-pickers';
+import dayjs from 'dayjs'
 const baseurl = "http://127.0.0.1:5554"
 const eventurl = baseurl + "/events"
 function App() {
@@ -48,8 +53,11 @@ function App() {
     }, []);
     return (
       <div classname="body">
-        {/* <NavBar  currentUser={currentUser} setCurrentUser={setCurrentUser}/> */}
-          <Home       />
+   <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <Home       />
+    </LocalizationProvider>
+
+       
       </div>
         );
 }

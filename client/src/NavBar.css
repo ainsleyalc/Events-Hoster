@@ -4,6 +4,7 @@
   background-color: #fffafa;
   height: 50px;
   display: flex;
+  z-index: 3;
 }
 
 .leftNav {
@@ -86,5 +87,19 @@
 
 
 }
+.rightNav p{
+color: black;
+margin-right: 10px;
+color: rgb(129, 127, 127);
+font-weight: 600;
+}
+.rightNav-rightNav{
+  display: flex;
+  
+  align-items: center;
+}
+ .rightNav button {
+ width: 120px;
+ height: 40px;
+ }
 
- 

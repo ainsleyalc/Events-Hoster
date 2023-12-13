@@ -27,7 +27,7 @@ const ProfilePage = () =>{
           <div className="event-list">
             {filteredEvents.map((singleEvent) => (
               <EventsCard
-                eKey={singleEvent.id}
+                ekey={singleEvent.id}
                 image={singleEvent.image}
                 title={singleEvent.title}
                 description={singleEvent.description}

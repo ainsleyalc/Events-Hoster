@@ -33,17 +33,20 @@ const Login = ({ loginUser }) => {
   return (
     <div className="login-container">
       <div className="container">
-        <h2>LOGIN</h2>
-        <form
+        <div className='toploginbox'><h1>Login </h1>
+        <h2> Sign in with your Username and password</h2>
+        </div>
+        <div className='loginForm '>
+         <form
           onSubmit={(e) => {
             e.preventDefault();
             loginUser(formData);
             setFormData(initialState);
           }}
         >
-          <div className="loginboxs">
+          <div className="loginboxss">
             <div className="center-input">
-              USERNAME
+             <p1>Your Username</p1>
               <br />
               <input
                 type="text"
@@ -54,7 +57,7 @@ const Login = ({ loginUser }) => {
               />
             </div>
             <div className="center-input">
-              PASSWORD
+              Your Password
               <br />
               <input
                 type="password"
@@ -64,18 +67,28 @@ const Login = ({ loginUser }) => {
                 name="password"
               />
             </div>
+            <Link>Forgot Password</Link>
             <div className="center-button">
               <button type="submit">LOGIN</button>
-              <br />
+
+              <div className='signupLink'>   
+               <Link to="/signup" >
+                Don't have an Account ?
+              </Link>               
+               <Link to="/" >
+                Go back to home Page ?
+              </Link></div>
+            
+              {/* <br />
               or
               <br />
-              <Link to="/signup">
-                <button>Sign Up</button>
-              </Link>
-            </div>
-          </div>
+            */}
+            </div> 
+          </div> 
         </form>
-      </div>
+        </div>
+
+      </div> 
     </div>
   );
 };

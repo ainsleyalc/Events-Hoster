@@ -1,31 +1,31 @@
 .login-container {
-    background-image: url("https://mavenprodstorage.blob.core.windows.net/img/HOB/New-Theme-2019/Special-Events/EventHero_1400x480_5.jpg");
+   background-color: #cbdfe387;
     background-size: cover;
     background-position: center;
     min-height: 100vh;
     display: flex;
-    align-items: center;
+
     justify-content: center;
+    align-items: center;
 
   }
   
   .container {
-    perspective: 1000px;
-    width: 900px;
+    background-color: #0c313e52;
+    width: 600px;
     height: 500px;
-    margin: 100px auto;
+    display:flex;
+    flex-direction: column;
     box-shadow: 0 0 20px rgba(98, 89, 89, 0.5);
     transform-style: preserve-3d;
     transform: rotateX(0deg) rotateY(0deg); /* Remove tilt effect */
     transition: transform 0.5s;
     border-radius: 20px;
+    overflow: hidden;
+   
   }
 
-  .container h2 {
-    font-size: 30px;
-    text-align: center;
-  }
-
+  
   
   .box {
     width: 100%;
@@ -45,7 +45,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+   
     box-sizing: border-box;
     border-radius: 15px;
   }
@@ -58,19 +58,78 @@
   .top { transform: translateY(-100px) rotateX(90deg); }
   .bottom { transform: translateY(100px) rotateX(-90deg); }
   
-  input {
-    margin-bottom: 10px;
-    padding: 10px;
-    width: 70%;
+
+  .toploginbox{
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  
+  }
+  .toploginbox h1 {
+    font-size: 30px;
+    color: white;
+    margin: 0%;
+    padding: 0%;
+   
+   
+  }
+  .toploginbox h2  {
+    font-size: 15px;
+    color: white;
+    margin: 0%;
+    padding: 0%;
+   
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   
+   
+  }
+  .loginForm {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: center;
+    margin-top: 15px;
+      
+  }
+  .center-input input {
+  
+    width: 100%;
     box-sizing: border-box;
-    border: 1px solid #057209; /* Add a border */
-    border-radius: 10px; /* Round the corners */
-    background-color: rgba(255, 255, 255, 0.5); /* Make the input box clear */
-    color: #000000; /* Set text color */
+    border: 1px solid #000000; 
+    border-radius: 4px; 
+    background-color: rgb(255, 255, 255);
+    color: #000000; 
     min-height: 45px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin-top: 5px;
     
   }
+.loginForm form {
+    width: 95%;
+    color: white;
   
+  }
+  .loginForm p1{
+    margin-left: 5px;
+    font-weight: 400;
+  }
+  .loginboxss {
+    display: flex;
+    flex-direction: column;
+  gap: 30px;}
+  .center-button button {
+width: 100%;
+height: 50px;
+margin-bottom: 50px;
+  }
+  .signupLink {
+    display: flex;
+  gap: 40%;
+  }
+  /*
   button {
     padding: 10px 20px;
     background-color: #0a7c25;
@@ -83,8 +142,8 @@
 
   .center-button {
     display: flex;
-    justify-content: center; /* Horizontally center */
-    align-items: center; /* Vertically center */
+    justify-content: center;
+    align-items: center; 
   }
 
   .Username{
@@ -96,7 +155,7 @@
 
 
   .passwordBox {
-    /* justify-content: center; */
+  
    
     margin-left: 200px;
     bottom: 100px;
@@ -105,15 +164,6 @@
   .input ::placeholder{
         color: antiquewhite;
   } 
-   /* .Username {
-    margin-bottom: 100px;
-  } */
-
-  /* .loginboxs {
-    margin-bottom: 100px;
-    display: grid;
-    gap: 0px;
-  } */
 
  input::placeholder,
  input::placeholder {
@@ -134,24 +184,23 @@
   }
   
   .center-button {
-    text-align: center;
+   text-align: center;
    bottom: 100px;
    display: flex;
    flex-direction: column;
   }
 
-  .loginboxs {
+  .loginboxss {
     display: flex;
     flex-direction: column;
-    gap: 0px;
-
+  gap: 40px;
     
   }
   
   .twin-inputs {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center align inputs vertically within twin-inputs */
+    align-items: center; 
     gap: 0px;
     margin-top: -50px;
-  }
+  } */

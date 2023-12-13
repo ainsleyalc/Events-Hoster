@@ -5,6 +5,7 @@ import { UserContext } from "../UserContext";
 import EditButtonModal from "./EditButtonModal"; 
 import "../event.css"
 import logo from "../sendicon.png"
+import editLogo from "../edit.png"
 const EventsCard = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {currentUser,setCurrentUser} = useContext(UserContext)
@@ -21,31 +22,34 @@ const EventsCard = (props) => {
     event.stopPropagation();
     setIsEditButtonModalOpen(!isEditButtonModalOpen);
   };
-  const eventData = event.find(event => event.id === props.eKey);
+  const eventData = event.find(event => event.id === props.ekey);
     
   return (
     <div>
           <div className="card-custom-card" >
             <img src={props.image} className="card-img-top" alt={props.title} />
+            {currentUser && props.user_Id === currentUser.id && (
+              <img className="edit-button" src={editLogo} onClick={setIsEditButtonModalOpen} />
+            )}
+            
               <div className="card-body">
                   <h5 className="card-title">{props.title}</h5>
                      {/* <p className="card-description">{props.description}</p> */}
                      <div className="card-location">
-         <p><strong>Location:</strong> {props.location}</p> 
+         <p><strong>Location:{console.log(props.user_Id)}</strong> {props.location}</p> 
           <strong>Time:{props.start_Time}</strong>
         </div>
         
-        {currentUser ? (
-    canEdit && <button onClick={toggleEditButtonModal}>edit</button>
-  ) : null}
+    
       </div>
       <div className="card-user-id">
-        <div className="TapButton"><button onClick={toggleModal}>Tap For More Info</button></div>
+        <div className="TapButton"><button onClick={toggleModal} className="TapButton-Button">Tap For More Info</button></div>
         <p>
           <strong>Event-Hoster:</strong> {props.user_id}
+
         </p>
       </div>
-
+                {console.log(props.start_time)}
     </div>
       <Modal
         isModalOpen={isModalOpen}
@@ -55,7 +59,7 @@ const EventsCard = (props) => {
         eKey={props.eKey}
         image={props.image}
         date={props.date}
-        start_Time={props.start_Time}
+        start_Time={props.start_time}
         location={props.location}
 
 

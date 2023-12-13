@@ -42,46 +42,27 @@ const NavBar = () => {
                 <Link to="/saved" className="custom-link">saved</Link>
               </p>
             </li>
+            <li>
+              <p>
+                <Link to="/listing" className="custom-link">Listing</Link>
+              </p>
+            </li>
           </ul> 
         </div>
-        <div className='rightNav'>
+        <div className='rightNav'> 
             {currentUser ? (
-               <button onClick={logoutUser} >Logout</button>
+              <div className='rightNav-rightNav'> <p>{currentUser.username}</p> <button onClick={logoutUser} >Logout</button></div>
+               
             ) : (
               <div className='buttonDiv' > 
+             
                 <button onClick={handleLoginClick}>Login</button>
                 <button onClick={handleSignupClick}>Signup</button>
               </div>
              
             )}
         </div>
-        {/* <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          {currentUser ? (
-            <>
-              <li>
-                <button onClick={logoutUser}>Logout</button>
-              </li>
-              <li>
-                <Link to="/profile">Profile</Link>
-              </li>
-              <li>
-                <Link to="/saved">saved</Link>
-              </li>
-            </>
-          ) : (
-            <>
-              <li>
-                <Link to="/signup">Sign Up</Link>
-              </li>
-              <li>
-                <Link to="/">Log In</Link>
-              </li>
-            </>
-          )}
-        </ul> */}
+      
   
     </div>
   );

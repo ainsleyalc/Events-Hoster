@@ -2,6 +2,8 @@ import React, {useState, useContext} from "react";
 import "../EditModal.css"
 import { UserContext } from "../UserContext";
 const EditButtonModal = ({ isOpen, onClose, eventData }) => {
+  const baseUrl = "http://127.0.0.1:5554"
+  const eventUrl = baseUrl + "/events"
     const [editedEvent, setEditedEvent] = useState({
       title: eventData.title,
       description: eventData.description,
@@ -21,9 +23,9 @@ const EditButtonModal = ({ isOpen, onClose, eventData }) => {
     };
   
     const handleFormSubmit = async (e) => {
-        e.preventDefault();
+       
       
-        const response = await fetch(`/events/${eventData.id}`, {
+        const response = await fetch(`${eventUrl}/${eventData.id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json"

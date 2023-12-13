@@ -3,14 +3,23 @@ import Events from "./Events";
 import NavBar from "./NavBar";
 import { UserContext } from '../UserContext'
 import "../index.css"
+import "../event.css"
 import logo from "../quoteLogo.png"
 import { useState } from "react";
 import Modal2 from "./Modal2"
+import { Link } from 'react-router-dom'
+import { DatePicker } from '@mui/x-date-pickers';
+import { DesktopDateTimePicker } from '@mui/x-date-pickers';
+import dayjs from 'dayjs'
 const Home = () => {
   const {currentUser,setCurrentUser} = useContext(UserContext)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = (event) => {
     setIsModalOpen(!isModalOpen);
+  };
+ 
+  const handleViewEventsClick = () => {
+    window.location.href = '/Listing'; 
   };
     return (
       
@@ -20,7 +29,7 @@ const Home = () => {
           <div className="left-Top-Div">
             <p>Host And Attend Events Today</p>
             <h1>Effortlessly host and participate in events today with a simple click, all at no cost. Experience the convenience and formality of our event platform.</h1>
-            <button  className="ViewButton">View Events</button>  
+            <Link to="/listing" className="ViewButton1">View Events</Link>
            {currentUser ? (<button className="ViewButton" onClick={toggleModal}>Add Event Today</button>    ) : null }     
           </div>
           <div className="right-Top-Div">
@@ -44,10 +53,40 @@ const Home = () => {
               </div>
         </div>
         <div>
-          <Events />
+          
+            <Events />
+            
+
+          
         </div>
         <div className="Buttom-of-Page">
-
+        <div className="grid-container">
+                <div className="column1">
+                        <ul><h6>About Company</h6>
+                        <hr class="orange-hr"></hr>
+                            <li>Our Company</li>
+                            <li>Partnerships</li>
+                            <li>USA Locations</li>
+                            <li>Guidelines</li>
+                            <li>Investors</li>
+                            <li>WorldWide Locations</li>
+                            <li>Virtual Auto Show</li>
+                           
+                        </ul>
+                </div>
+                <div className="column2">
+                        <ul><h6>Quick Links</h6>
+                        <hr class="orange-hr"></hr>
+                            <li>Events</li>
+                            <li>My Account</li>
+                            <li>Profile</li>
+                            <li>Listings</li>
+                            <li>Deals and Incentive</li>
+                            <li>Financial Services</li>
+                            <li>link1</li>
+                        </ul>
+                </div>
+                </div>
         </div>
         <Modal2
         isOpen={isModalOpen}

@@ -1,5 +1,4 @@
-.login-container {
-    background-image: url("https://mavenprodstorage.blob.core.windows.net/img/HOB/New-Theme-2019/Special-Events/EventHero_1400x480_5.jpg");
+ /*.login-container {
     background-size: cover;
     background-position: center;
     min-height: 100vh;
@@ -11,12 +10,12 @@
   
   .container {
     perspective: 1000px;
-    width: 900px;
+    width: 600px;
     height: 500px;
     margin: 100px auto;
     box-shadow: 0 0 20px rgba(98, 89, 89, 0.5);
     transform-style: preserve-3d;
-    transform: rotateX(0deg) rotateY(0deg); /* Remove tilt effect */
+    transform: rotateX(0deg) rotateY(0deg); 
     transition: transform 0.5s;
     border-radius: 20px;
   }
@@ -24,7 +23,7 @@
   .container h2 {
     font-size: 30px;
     text-align: center;
-  }
+  } */
 
   
   .box {
@@ -58,15 +57,15 @@
   .top { transform: translateY(-100px) rotateX(90deg); }
   .bottom { transform: translateY(100px) rotateX(-90deg); }
   
-  input {
+  /* input {
     margin-bottom: 10px;
     padding: 10px;
     width: 300px;
     box-sizing: border-box;
-    border: 1px solid #057209; /* Add a border */
-    border-radius: 10px; /* Round the corners */
-    background-color: rgba(255, 255, 255, 0.5); /* Make the input box clear */
-    color: #000000; /* Set text color */
+    border: 1px solid #000000;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5); 
+    color: #000000; 
     min-height: 45px;
     
   }
@@ -83,8 +82,8 @@
 
   .center-button {
     display: flex;
-    justify-content: center; /* Horizontally center */
-    align-items: center; /* Vertically center */
+    justify-content: center; 
+    align-items: center; 
   }
 
   .Username{
@@ -95,30 +94,15 @@
   }
 
 
-  .passwordBox {
-    /* justify-content: center; */
-   
-    margin-left: 200px;
-    bottom: 100px;
-  }
-
+  
   .input ::placeholder{
         color: antiquewhite;
   } 
-   /* .Username {
-    margin-bottom: 100px;
-  } */
-
-  /* .loginboxs {
-    margin-bottom: 100px;
-    display: grid;
-    gap: 0px;
-  } */
 
  input::placeholder,
  input::placeholder {
   font-weight: bold;
-  color: rgb(58, 106, 61);
+  color: grey;
   display: flex;
   justify-content: center;
   
@@ -151,6 +135,6 @@
   .twin-inputs {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center align inputs vertically within twin-inputs */
+    align-items: center; 
     gap: 0px;
-  }
+  } */

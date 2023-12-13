@@ -1,15 +1,59 @@
 .edit-button-modal-content{
-    display: flex;
-    flex-direction: column;
+
+
     text-align: center;
     align-items: center;
+    z-index:1000 ;
+    height: 500px;
+    width: 400px;
+    position: relative;
+}
+.cancel-button{
+    position: absolute;
+    right:0;
+    top: 0;
+    width: 20px;
+    padding: 8px;
+    
+}
+.cancel-button :hover {
+width: 25px;
+cursor: pointer;
+}
+.cancel-button img {
+    width: 100%;
+    height: 100%;
+}
+.input-Group {
+  
+    padding: px;
+     
+}
+.input-Group input {
+    width: 300px;
+   color: grey;
+   border-color: black;
+}
+.input-Group ::placeholder {
+    color: rgb(133, 141, 148);
 }
 
-.input-group {
-    display: flex;
 
+
+.input-Group h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
 }
+.timeclicker{
+  border-radius: 15px;
+  background-color: rgb(230, 236, 237);
 
-.input-group input {
-    margin: 10px;
+  
+}
+.Submit-Button{
+    margin-top: 7px;
+    background-color: rgb(78, 102, 106); 
+    width: 100px;
+    border-radius: 10px;
 }

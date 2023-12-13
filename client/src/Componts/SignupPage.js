@@ -62,15 +62,17 @@ const SignUpPage = () => {
 return (
     <div className="login-container">
       <div className="container">
-        <h2>SIGNUP TODAY</h2>
-        <form
+      <div className='toploginbox'><h1>Sign up  </h1>
+        <h2> To Sign up Please create a unique Username and Password</h2>
+        </div>
+        <div className='loginForm '>   <form
           onSubmit={(e) => {
             e.preventDefault();
             signUpUser(formData); 
             setFormData(initialState);
           }}
         >
-         <div className="loginboxs">
+         <div className="loginboxss">
           <div className='twin-inputs' >
               <div className="center-input">
                 Name
@@ -106,7 +108,7 @@ return (
                 />
               </div>
             
-
+           
        
 
 
@@ -114,17 +116,20 @@ return (
           </div>
 
           <div className="center-button">
-            <button type="submit">Sign Up</button>
-            <br />
-            or
-            <br />
-            <Link to="/login">
-        <button>Login</button>
-      </Link>
-          </div>
-        </div>
+              <button type="submit">Create User</button>
 
-      </form>
+              <div className='signupLink'>   
+               <Link to="/login" >
+               Already have an account ?
+              </Link>               
+               <Link to="/" >
+                Go back to home Page ?
+              </Link></div>
+            
+        </div> 
+</div>
+      </form> </div>
+     
     </div>
   </div>
 );

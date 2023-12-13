@@ -4,11 +4,29 @@ flex-direction: column;
 text-align: center;
 align-items: center;
 
+
+}
+.event-Div1 button {
+        margin-top: 10px;
+        width: 13%;
+        border-radius: 18px;
+        height: 46px;
+        background-color: rgb(78, 102, 106); 
+        font-size: 13px;
+}
+.viewbutton{
+    margin-top: 50px;
+    width: 13%;
+    border-radius: 18px;
+    height: 46px;
+    background-color: rgb(78, 102, 106); 
+    font-size: 13px;
 }
 .event-Div p1 {
 font-size: 50px;
 font-weight: 900;
-padding-left: 14px;
+margin-bottom: 20px;
+margin-top: 20px;
 color: rgb(74, 71, 71);
 }
 .event-list {
@@ -35,15 +53,34 @@ color: rgb(74, 71, 71);
     white-space: nowrap;
     position: relative;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+    
 }
 .card-img-top{
     height: 200px;
     width:  95%;
     border-radius: 10px;
     padding-top: 5px;
+   
+}
+.edit-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+   width: 40px;
+   height: 40px;
+    border-radius: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: white; /* Text color */
 
 }
-
+.edit-button:hover{
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+} 
 .card-body {
     display: flex;
     flex-direction: column;
@@ -65,14 +102,7 @@ color: rgb(74, 71, 71);
     display: flex;
     flex-direction: column;
 }
-.event-Div button {
-        margin-top: 10px;
-        width: 13%;
-        border-radius: 18px;
-        height: 46px;
-        background-color: rgb(78, 102, 106); 
-        font-size: 13px;
-}
+
 
 .card-user-id{
   position: absolute;
@@ -90,4 +120,25 @@ width: 200px;
     width: 100%;
     display: flex;
     justify-content: center;
+}
+.TapButton-Button {
+     width: 13%;
+    border-radius: 18px;
+    height: 46px;
+    background-color: rgb(78, 102, 106); 
+    font-size: 13px;
+    color: white;
+}
+.ViewButton2 {
+    display: flex;
+  align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    height: 46px;
+    width: 14%;
+    background-color: rgb(78, 102, 106); 
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    margin-top: 30px;
 }

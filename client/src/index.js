@@ -10,6 +10,7 @@ import NavBar from "./Componts/NavBar"
 import Attending from './Componts/Attending';
 import SignUpPage from './Componts/SignUpPage';
 import LoginPage from "./Componts/LoginPage"
+import Listing from "./Componts/Listing"
 function Index() {
   const [currentUser, setCurrentUser] = useState(null);
   const [event, setEvent] = useState([])
@@ -30,7 +31,7 @@ function Index() {
     .then(r => r.json())
     .then(user => {
       if (user === null) {
-        alert("Something went wrong: Response is null");
+        alert("Please Check Your UserName and Password ");
       } else {
         setCurrentUser(user)
         console.log(user); 
@@ -60,6 +61,14 @@ function Index() {
               <NavBar /> 
               <Attending   />
             </> : <Navigate to="/" />}
+            
+          />
+          <Route
+            path="/Listing"
+            element={ <>   <NavBar  currentUser={currentUser}/> 
+              <Listing /></>
+           
+          }
             
           />
         </Routes>
