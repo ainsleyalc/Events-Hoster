@@ -11,6 +11,11 @@ import Attending from './Componts/Attending';
 import SignUpPage from './Componts/SignUpPage';
 import LoginPage from "./Componts/LoginPage"
 import Listing from "./Componts/Listing"
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
+import { DesktopDateTimePicker } from '@mui/x-date-pickers';
+import dayjs from 'dayjs'
 function Index() {
   const [currentUser, setCurrentUser] = useState(null);
   const [event, setEvent] = useState([])
@@ -41,7 +46,7 @@ function Index() {
 
   }
   return (
-    <Router>
+    <LocalizationProvider dateAdapter={AdapterDayjs}> <Router>
       <UserContext.Provider value={{ currentUser, setCurrentUser, event, setEvent, users, setUsers}}>
         <Routes>
           <Route path="/" element={<App />} />
@@ -73,7 +78,8 @@ function Index() {
           />
         </Routes>
       </UserContext.Provider>
-    </Router>
+    </Router></LocalizationProvider>
+   
   );
 }
 

@@ -28,7 +28,13 @@ const Modal2 = ({ isOpen, onClose }) => {
   
     const handleFormSubmit = async (e) => {
       e.preventDefault();
-    
+      const requiredFields = ["title", "description", "location"];
+      const missingFields = requiredFields.filter(field => !editedEvent[field]);
+
+      if (missingFields.length > 0) {
+        alert(`Please fill in the following required fields: ${missingFields.join(', ')}`);
+        return;
+  }
       try {
         const formattedDates = formatDate(date);
         const user_id = currentUser ? currentUser.id : null;
@@ -50,6 +56,12 @@ const Modal2 = ({ isOpen, onClose }) => {
           const updatedEventData = await response.json();
           
           setEvent((prevEvents) => prevEvents.map((event) => (event.id === updatedEventData.id ? updatedEventData : event)));
+          setEditedEvent({
+            title: "",
+            description: "",
+            location: "",
+            image: "",
+          }); 
           onClose();
           alert("Event details updated successfully!");
         } else {

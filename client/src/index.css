@@ -237,3 +237,6 @@ li:hover {
 
 }
 
+.button {
+  cursor: pointer;
+}

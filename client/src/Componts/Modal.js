@@ -3,7 +3,7 @@ import "../Modal.css"
 import CommentCard from './CommentCard';
 import { UserContext } from '../UserContext';
 import logo from "../sendicon.png"
-  
+import sendicon from "../sendiconn.png"
   
 
 const Modal = ({ isModalOpen, toggleModal, ...props}) => {
@@ -14,6 +14,7 @@ const Modal = ({ isModalOpen, toggleModal, ...props}) => {
   const usersUrl = baseUrl + "/user"
   const [newComment, setNewComment] = useState({});
   const {currentUser,setCurrentUser} = useContext(UserContext)
+  
   useEffect(() => {
     if (isModalOpen) {
       fetch(commentsUrl, { method: 'GET' })
@@ -113,7 +114,7 @@ const Modal = ({ isModalOpen, toggleModal, ...props}) => {
        <div className='Modal-Top-left'>
           <img src={props.image}/>
        </div>
-       <div className='Modal-Top-Right'>
+       <div className='Modal-Top-Rightt'>
         <p>{props.title}</p>
         <p3>{props.description}</p3>
        </div>
@@ -134,10 +135,10 @@ const Modal = ({ isModalOpen, toggleModal, ...props}) => {
           ))} 
           </div>
      </div>
-     <div  className='comment-input-container'>
+     <div  >
 
-      {currentUser ? ( <div><input  placeholder='Write Here' className='comment-input'   value={newComment.text}
-            onChange={handleCommentChange} type="text"/>  <button onClick={handleAddComment} className='send-Button'>SEND</button></div>
+      {currentUser ? ( <div className='comment-input-container'><input  placeholder='Write Here' className='comment-inputt'   value={newComment.text}
+            onChange={handleCommentChange} type="text"/>  <button onClick={handleAddComment} className='send-Button'><img  src={sendicon}/></button></div>
         ) :<p >Sign in to comment</p>}
      
      </div>

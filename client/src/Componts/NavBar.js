@@ -15,9 +15,7 @@ const NavBar = () => {
     const handleSignupClick = () => {
       window.location.href = '/signup'; // Replace with the desired URL
     };
-    const handleLoginClick = () => {
-      window.location.href = '/login'; // Replace with the desired URL
-    };
+ 
   
   return (
     <div className="navbar">
@@ -55,9 +53,9 @@ const NavBar = () => {
                
             ) : (
               <div className='buttonDiv' > 
-             
-                <button onClick={handleLoginClick}>Login</button>
-                <button onClick={handleSignupClick}>Signup</button>
+                <Link to="/login" className="custom-link"><button>Login</button></Link>
+                <Link to="/signup" className="custom-link"><button>Signup</button></Link>
+                
               </div>
              
             )}

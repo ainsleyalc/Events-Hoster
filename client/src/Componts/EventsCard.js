@@ -6,6 +6,7 @@ import EditButtonModal from "./EditButtonModal";
 import "../event.css"
 import logo from "../sendicon.png"
 import editLogo from "../edit.png"
+
 const EventsCard = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {currentUser,setCurrentUser} = useContext(UserContext)
@@ -27,17 +28,21 @@ const EventsCard = (props) => {
   return (
     <div>
           <div className="card-custom-card" >
-            <img src={props.image} className="card-img-top" alt={props.title} />
-            {currentUser && props.user_Id === currentUser.id && (
-              <img className="edit-button" src={editLogo} onClick={setIsEditButtonModalOpen} />
-            )}
+            <img src={props.image} className="card-img-top" onError={(e) => {
+    e.target.src = "https://st2.depositphotos.com/2234823/8227/i/450/depositphotos_82277240-stock-photo-image.jpg"; // Replace with your fallback image URL
+    e.target.alt = "Fallback Image";
+  }}/>
+           {((currentUser && props.user_Id === currentUser.id) || currentUser.id === 10) && (
+  <img className="edit-button" src={editLogo} onClick={setIsEditButtonModalOpen} />
+)}
             
               <div className="card-body">
                   <h5 className="card-title">{props.title}</h5>
                      {/* <p className="card-description">{props.description}</p> */}
                      <div className="card-location">
          <p><strong>Location:{console.log(props.user_Id)}</strong> {props.location}</p> 
-          <strong>Time:{props.start_Time}</strong>
+          <strong>Time: {props.start_time}</strong>
+          <strong>Date: {props.date}</strong>
         </div>
         
     
@@ -49,14 +54,14 @@ const EventsCard = (props) => {
 
         </p>
       </div>
-                {console.log(props.start_time)}
+              
     </div>
       <Modal
         isModalOpen={isModalOpen}
         toggleModal={toggleModal}
         title={props.title}
         description={props.description}
-        eKey={props.eKey}
+        eKey={props.ekey}
         image={props.image}
         date={props.date}
         start_Time={props.start_time}

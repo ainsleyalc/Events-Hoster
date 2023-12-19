@@ -47,8 +47,8 @@ const Events= () =>{
 
 
       return (
-        <div className='event-list'>
-          {event.slice(-5).map((singleEvent) => (
+        <div className='event-listt'>
+          {event.slice(-5).reverse().map((singleEvent) => (
     <EventsCard
       ekey={singleEvent.id}
       image={singleEvent.image}

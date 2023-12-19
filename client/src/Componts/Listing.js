@@ -5,7 +5,7 @@ import "../index.css"
 import "../event.css"
 import EventsCard from "./EventsCard";
 import search from "../search.png"
-
+import "../Modal.css"
 const Listing = () =>{
     const baseUrl = "http://127.0.0.1:5554"
     const eventUrl = baseUrl + "/events"

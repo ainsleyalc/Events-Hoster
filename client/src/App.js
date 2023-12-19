@@ -47,8 +47,8 @@ function App() {
       const storedUser = localStorage.getItem('currentUser');
       if (storedUser) {
         setCurrentUser(JSON.parse(storedUser));
-        // Optionally navigate to a certain route if needed
-        navigate('/'); // Redirect to the home page
+       
+        navigate('/'); 
       }
     }, []);
     return (

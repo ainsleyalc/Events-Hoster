@@ -26,13 +26,15 @@ cursor: pointer;
 }
 .input-Group {
   
-    padding: px;
+    padding-bottom: 10px;
      
 }
 .input-Group input {
     width: 300px;
    color: grey;
    border-color: black;
+   height: 40px;
+   border-radius: 10px;
 }
 .input-Group ::placeholder {
     color: rgb(133, 141, 148);
@@ -47,13 +49,19 @@ cursor: pointer;
 }
 .timeclicker{
   border-radius: 15px;
-  background-color: rgb(230, 236, 237);
+
+
+  margin-top: 10px;
+  
 
   
 }
 .Submit-Button{
-    margin-top: 7px;
+    margin-top: 20px;
     background-color: rgb(78, 102, 106); 
-    width: 100px;
+    width: 150px;
     border-radius: 10px;
+    color: aliceblue;
+    height: 40px;
+    cursor: pointer;
 }

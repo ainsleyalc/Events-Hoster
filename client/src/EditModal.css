@@ -24,13 +24,28 @@
     max-width: 700px;
     z-index: 2000;
   }
+  .edit-button-modal-content h2{
+    margin: 0%;
+    padding: 0%;
+  }
   
-  .input-group {
-   
+  .input-group3 {
+   display: flex;
+   flex-direction: column;
+   margin-top: 30px;
+ 
+   justify-content: center;
   }
   
   .input-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  margin-bottom: 5px;
   }
+  .deleteEvent{
+    display: flex;
+    color: red;
+   cursor: pointer;
+  }
+

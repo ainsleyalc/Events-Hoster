@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
  
   
 }
@@ -22,7 +23,7 @@
   max-height: 70%;
   overflow: hidden;
   position:  fixed;
-
+z-index: 2000;
   width: 100%;
   height: 100%;
   display: flex; /* Change display to flex */
@@ -56,14 +57,16 @@
   min-height: 100%;
   border-radius: 10px;
 }
-.Modal-Top-Right {
+.Modal-Top-Rightt {
   display: flex;
   width: 50%;
- justify-content: center;
+
+ text-align: center;
+ align-items: center;
  overflow: hidden;
  flex-direction: column;
 } 
-.Modal-Top-Right p {
+.Modal-Top-Rightt p {
   font-size: 60px;
   font-weight: 800;
   white-space: normal;
@@ -72,7 +75,7 @@
   padding: 0;
 
 }
-.Modal-Top-Right p3 {
+.Modal-Top-Rightt p3 {
   white-space: normal;
 }
 .comment-Container {
@@ -131,16 +134,20 @@ overflow: auto;
  
  
 }
-.comment-input {
+.comment-inputt {
  border-color: aliceblue;
  font-size: 12px;
  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
  padding: 0%;
  margin: 0%;
+ width: 100%;
+height: 40px;
+ border-radius: 10px;
+
 
 }
 
-.comment-input::placeholder {
+.comment-inputt::placeholder {
   color: rgb(166, 157, 157);
   padding-left: 13px;
 }
@@ -148,14 +155,25 @@ overflow: auto;
  display: flex;
  align-items: center;
  margin-left: 15px;
+ width: 100%;
+ gap: 10px;
  
 }
 
 
 .send-Button {
-   width: 100%;
-   height: 10px;
+   width:80px;
+   height: 40px;
+   cursor: pointer;
 }
+.send-Button img {
+  overflow: hidden;
+  width: 30px;
+  max-width: 30px;
+  height: 35px
+}
+
+
 
 
 
