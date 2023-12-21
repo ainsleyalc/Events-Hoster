@@ -5,7 +5,7 @@ import {useState, useEffect, useContext} from 'react'
 import { UserContext } from '../UserContext';
 import { Link } from 'react-router-dom'
 const Events= () =>{
-    const baseUrl = "http://127.0.0.1:5554"
+    const baseUrl = "http://3.15.1.45"
     const eventUrl = baseUrl + "/events"
     const userUrl = baseUrl + "/user"
   

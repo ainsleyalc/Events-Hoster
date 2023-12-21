@@ -20,7 +20,7 @@ function Index() {
   const [currentUser, setCurrentUser] = useState(null);
   const [event, setEvent] = useState([])
   const [users, setUsers] = useState([])
-  const baseurl = "http://127.0.0.1:5554"
+  const baseurl = "http://3.15.1.45"
   const eventurl = baseurl + "/events"
   const loginUser = (loginInfo) =>{
     

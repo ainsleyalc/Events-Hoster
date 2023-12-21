@@ -23,6 +23,11 @@
   
 
 }
+.custom-link{
+  text-decoration: none;
+  color: rgb(78, 102, 106);
+
+}
 .leftNav img{
   width:30%;
   height: 100%;
@@ -52,18 +57,11 @@
     color: rgb(78, 102, 106); 
     
 }
-.middleNav p {
-  text-decoration: none;
-  
- 
-}
+
 
 .middleNav a:visited {
   color: rgb(78, 102, 106); 
   text-decoration: none;
-}
-.middleNav a.custom-link {
-  text-decoration: none; 
 }
 
 .rightNav {

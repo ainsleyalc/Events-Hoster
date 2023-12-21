@@ -9,7 +9,7 @@ const initialState = {
     username: '',
     password: '',
   };
-const baseurl = "http://127.0.0.1:5554"
+const baseurl = "http://3.15.1.45"
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState(initialState);

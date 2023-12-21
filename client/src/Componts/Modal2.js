@@ -7,7 +7,7 @@ import dayjs from 'dayjs'
 import xicon from "../close.png"
 const Modal2 = ({ isOpen, onClose }) => {
     const {currentUser,setCurrentUser} = useContext(UserContext)
-    const baseurl = "http://127.0.0.1:5554"
+    const baseurl = "http://3.15.1.45"
     const [date, setDate] = useState("")
     const [editedEvent, setEditedEvent] = useState({
       title: "",

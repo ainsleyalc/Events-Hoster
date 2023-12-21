@@ -7,7 +7,7 @@ import EventsCard from "./EventsCard";
 import search from "../search.png"
 import "../Modal.css"
 const Listing = () =>{
-    const baseUrl = "http://127.0.0.1:5554"
+    const baseUrl = "http://3.15.1.45"
     const eventUrl = baseUrl + "/events"
     const userUrl = baseUrl + "/user"
   

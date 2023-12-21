@@ -6,7 +6,7 @@ import { DesktopDateTimePicker } from '@mui/x-date-pickers';
 import dayjs from 'dayjs'
 import xicon from "../close.png"
 const EditButtonModal = ({ isOpen, onClose, eventData }) => {
-  const baseUrl = "http://127.0.0.1:5554"
+  const baseUrl = "http://3.15.1.45"
   const eventUrl = baseUrl + "/events"
  
     const [editedEvent, setEditedEvent] = useState({
