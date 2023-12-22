@@ -55,7 +55,7 @@ const Modal2 = ({ isOpen, onClose }) => {
         if (response.ok) {
           const updatedEventData = await response.json();
           
-          setEvent((prevEvents) => prevEvents.map((event) => (event.id === updatedEventData.id ? updatedEventData : event)));
+          setEvent((prevEvents) => [...prevEvents, updatedEventData]);
           setEditedEvent({
             title: "",
             description: "",

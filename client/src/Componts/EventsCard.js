@@ -23,24 +23,28 @@ const EventsCard = (props) => {
     event.stopPropagation();
     setIsEditButtonModalOpen(!isEditButtonModalOpen);
   };
-  const eventData = event.find(event => event.id === props.ekey);
+  const eventData = event && event.find((event) => event && event.id === props.ekey);
     
   return (
     <div>
           <div className="card-custom-card" >
             <img src={props.image} className="card-img-top" onError={(e) => {
-    e.target.src = "https://st2.depositphotos.com/2234823/8227/i/450/depositphotos_82277240-stock-photo-image.jpg"; // Replace with your fallback image URL
+    e.target.src = "https://st2.depositphotos.com/2234823/8227/i/450/depositphotos_82277240-stock-photo-image.jpg"; 
     e.target.alt = "Fallback Image";
   }}/>
-           {((currentUser && props.user_Id === currentUser.id) || currentUser.id === 10) && (
-  <img className="edit-button" src={editLogo} onClick={setIsEditButtonModalOpen} />
-)}
-            
+ {canEdit && (
+        <img
+          className="edit-button"
+          src={editLogo}
+          onClick={() => setIsEditButtonModalOpen(!isEditButtonModalOpen)}
+          alt="Edit Button"
+        />
+      )}
               <div className="card-body">
                   <h5 className="card-title">{props.title}</h5>
                      {/* <p className="card-description">{props.description}</p> */}
                      <div className="card-location">
-         <p><strong>Location:{console.log(props.user_Id)}</strong> {props.location}</p> 
+         <p><strong>Location:</strong> {props.location}</p> 
           <strong>Time: {props.start_time}</strong>
           <strong>Date: {props.date}</strong>
         </div>
@@ -69,14 +73,13 @@ const EventsCard = (props) => {
 
 
       />
-      {isEditButtonModalOpen && (
-        <EditButtonModal
-          isOpen={isEditButtonModalOpen}
-          onClose={() => setIsEditButtonModalOpen(false)}
-          eventData={eventData}
-          
-        />
-      )}
+       {event && eventData && isEditButtonModalOpen && (
+      <EditButtonModal
+        isOpen={isEditButtonModalOpen}
+        onClose={() => setIsEditButtonModalOpen(false)}
+        eventData={eventData}
+      />
+    )}
     </div>
   )
 };
