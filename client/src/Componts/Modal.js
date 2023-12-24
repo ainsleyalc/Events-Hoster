@@ -41,11 +41,15 @@ const Modal = ({ isModalOpen, toggleModal, ...props}) => {
     return filteredComments
   };
 
-  const grabUser = (id) =>{
-    const user = users.filter(user => user.id === id)
-    return user[0].name
+  const grabUser = (id) => {
+    const user = users.find(user => user.id === id);
+  
+    if (!user) {
+      return "User Not Found"; // Return a default value or handle the scenario when user is not found
+    }
+  
+    return user.name;
   }
-
   
   const handleCommentChange = (event) => {
     const text = event.target.value

@@ -24,7 +24,10 @@ flex-direction: column;
   flex-direction: column;
   padding-left: 4%;
 }
-
+.span {
+color: red;
+font-size: larger;
+}
 
 .left-Top-Div{
   font-size: 45px;
@@ -122,13 +125,15 @@ flex-direction: column;
   justify-content: center;
   flex-direction: column;
   overflow: hidden;
+  min-width: 400px;
+  min-height: 200px;
 }
 
 .Quote-box h1 {
  
   font-size: 20px;
   font-style: italic;
-  margin: 0;
+ 
   font-weight: 200;
   width: 100%;
   
@@ -239,4 +244,90 @@ li:hover {
 
 .button {
   cursor: pointer;
+}
+@media (max-width: 408px) {
+  .top-div {
+    background-image: url(https://img.freepik.com/free-photo/gray-abstract-wireframe-technology-background_53876-101941.jpg); 
+    background-size: cover;
+    background-position: center;
+   margin-top: 100px;
+    font-weight: bold;
+    font-size: 100px; 
+    display: flex;
+   align-items: center;
+    justify-content: center;
+    height: 800px;
+    width: 100%;
+  }
+  .ViewButton {
+    border-radius: 8px;
+    color: #ffffff;
+    background-color:rgb(78, 102, 106); 
+    width: 60%;
+    margin-bottom: 10px;
+    
+  }
+  .ViewButton1 {
+    border-radius: 8px;
+    color: #ffffff;
+    background-color:rgb(78, 102, 106); 
+    width: 60%;
+    margin-bottom: 10px;
+    height: 60px;
+    
+  }
+  .ViewButton2 {
+    width: 100px;
+  }
+  .Quote-box {
+    display: flex;
+    width: 40%;
+    height: 60%;
+    border-radius: 10px;
+    box-shadow: 4px 4px 0px #333;
+    margin: 10px;
+    background-color: #ffffff;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .Quote-box h1 {
+   
+    font-size: 20px;
+    font-style: italic;
+    margin: 0;
+    font-weight: 200;
+    width: 100%;
+    
+  }
+  
+  .author {
+    font-weight: bold;
+  
+  }
+
+  .Message-Container{
+    display: flex;
+    width: 100%;
+    gap: 40px;
+    height: 350px;
+    margin-top: 40px;
+    margin-left: 0px;
+    margin-bottom: 0;
+    padding-bottom: 0px;
+  }
+
+  .event-Div {
+    margin-top: 150px;
+    display: flex;
+    background-color: aliceblue;
+    width: 100%;
+    height: 730px;
+  }
+  .column2{
+   margin-left: 10px;
+  }
 }

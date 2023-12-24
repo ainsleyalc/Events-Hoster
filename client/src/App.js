@@ -52,8 +52,11 @@ function App() {
       }
     }, []);
     return (
+      
       <div classname="body">
+
    <LocalizationProvider dateAdapter={AdapterDayjs}>
+    
         <Home       />
     </LocalizationProvider>
 

@@ -30,7 +30,7 @@ const Home = () => {
             <p>Host And Attend Events Today</p>
             <h1>Effortlessly host and participate in events today with a simple click, all at no cost. Experience the convenience and formality of our event platform.</h1>
             <Link to="/listing" className="ViewButton1">View Events</Link>
-           {currentUser ? (<button className="ViewButton" onClick={toggleModal}>Add Event Today</button>    ) : null }     
+           {currentUser ? (<button className="ViewButton" onClick={toggleModal}>Add Event Today</button>    ) : <h1>Login/Signup to add and Create events today </h1>}     
           </div>
           <div className="right-Top-Div">
             <img   src="https://seo.workstream.us/images/landing-job-desc.png"/>

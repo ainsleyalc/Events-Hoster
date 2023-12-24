@@ -101,4 +101,23 @@ font-weight: 600;
  width: 120px;
  height: 40px;
  }
+ 
+ @media (max-width: 408px) {
+  .navbar {
+    flex-direction: column;
+    
+  }
 
+  .leftNav, .middleNav, .rightNav {
+    width: 100%;
+    text-align: center;
+   
+  }
+
+  .rightNav p{
+    color: rgba(255, 255, 255, 0.069);
+    margin-right: 10px;
+    
+    font-weight: 600;
+    }
+}
